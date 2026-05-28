@@ -50,3 +50,27 @@ For the next corrected model cycle:
 - rebuild presence/background training samples;
 - retrain and audit models without coordinate leakage;
 - generate a 500 m Sydney prediction grid from real environmental features or clearly label any resampling.
+
+## Deep Learning Sidecar Models
+
+The pipeline now includes an optional PyTorch MLP trainer at
+`pipelines/train_deep_model.py`. It is intentionally a sidecar experiment:
+outputs are written to `data/processed/deep_models/` and do not overwrite the
+existing scikit-learn Logistic Regression / HistGradientBoosting artifacts.
+
+The first deep model is a regularised multilayer perceptron over tabular,
+date-aligned environmental features. This is more appropriate than a CNN for
+the current dataset because the pipeline currently exports point/grid-cell
+feature tables, not local raster patches. CNN-style models should be added only
+after the pipeline exports SST/current/chlorophyll/depth neighbourhood tensors
+around each sample.
+
+Training progress is printed to the terminal and written to:
+
+```bash
+data/processed/deep_models/{species_id}/training.log
+```
+
+The deep model output remains relative habitat suitability from
+presence/background labels. It is not exact fish location, guaranteed fish
+presence, or true catch probability.
