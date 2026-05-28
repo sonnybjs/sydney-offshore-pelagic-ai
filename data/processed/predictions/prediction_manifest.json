@@ -1,0 +1,102 @@
+{
+  "demo": {
+    "mode": "demo",
+    "date": null,
+    "species": {
+      "yellowfin_tuna": {
+        "available": false,
+        "species_id": "yellowfin_tuna",
+        "common_name": "Yellowfin Tuna",
+        "reason": "no trained candidates available",
+        "model_confidence": "Rule-based only",
+        "notes": "Unavailable species is shown clearly in the UI; no fallback fish-location claim is made."
+      },
+      "mahi_mahi": {
+        "available": true,
+        "mode": "demo",
+        "species_id": "mahi_mahi",
+        "common_name": "Mahi Mahi / Dolphinfish",
+        "prediction_date": "2025-12-22",
+        "target_date": "2025-12-22",
+        "file_path": "data/processed/predictions/2025-12-22_mahi_mahi_sydney_heatmap.geojson",
+        "model_type": "logistic_regression_balanced",
+        "model_confidence": "Low",
+        "feature_set_name": "minimum_sst_bathy",
+        "data_source_dates": {
+          "sst": "2025-12-22",
+          "physics": null,
+          "chl": null,
+          "bathymetry": "static"
+        },
+        "available_layers": [
+          "habitat_heatmap",
+          "hotspot_points",
+          "poi_markers",
+          "sst_front_proxy"
+        ],
+        "notes": "Model under audit: nearshore saturation detected. Do not use as real prediction. Model under audit: nearshore saturation detected. Do not use as real prediction. Model under audit: nearshore saturation detected. Do not use as real prediction. Relative habitat suitability from a presence/background model; not exact fish location or guaranteed catch.",
+        "audit_status": "under_audit_nearshore_saturation_detected",
+        "warning": "Model under audit: nearshore saturation detected. Do not use as real prediction."
+      },
+      "striped_marlin": {
+        "available": false,
+        "species_id": "striped_marlin",
+        "common_name": "Striped Marlin",
+        "reason": "no trained candidates available",
+        "model_confidence": "Rule-based only",
+        "notes": "Unavailable species is shown clearly in the UI; no fallback fish-location claim is made."
+      }
+    },
+    "notes": "Demo mode uses the most recent historical trained-model prediction files available per species."
+  },
+  "current": {
+    "mode": "current",
+    "target_date": "2026-05-28",
+    "species": {
+      "yellowfin_tuna": {
+        "available": false,
+        "species_id": "yellowfin_tuna",
+        "common_name": "Yellowfin Tuna",
+        "reason": "no trained candidates available",
+        "model_confidence": "Rule-based only",
+        "notes": "Unavailable species is shown clearly in the UI; no fallback fish-location claim is made."
+      },
+      "mahi_mahi": {
+        "available": true,
+        "mode": "current",
+        "species_id": "mahi_mahi",
+        "common_name": "Mahi Mahi / Dolphinfish",
+        "prediction_date": "2026-05-28",
+        "target_date": "2026-05-28",
+        "file_path": "data/processed/predictions/2026-05-28_mahi_mahi_current_sydney_heatmap.geojson",
+        "model_type": "logistic_regression_balanced",
+        "model_confidence": "Low",
+        "feature_set_name": "minimum_sst_bathy",
+        "data_source_dates": {
+          "sst": "2026-05-25",
+          "physics": null,
+          "chl": null,
+          "bathymetry": "static"
+        },
+        "available_layers": [
+          "habitat_heatmap",
+          "hotspot_points",
+          "poi_markers",
+          "sst_front_proxy"
+        ],
+        "notes": "Model under audit: nearshore saturation detected. Do not use as real prediction. Model under audit: nearshore saturation detected. Do not use as real prediction. Model under audit: nearshore saturation detected. Do not use as real prediction. Relative habitat suitability from a presence/background model; not exact fish location or guaranteed catch.",
+        "audit_status": "under_audit_nearshore_saturation_detected",
+        "warning": "Model under audit: nearshore saturation detected. Do not use as real prediction."
+      },
+      "striped_marlin": {
+        "available": false,
+        "species_id": "striped_marlin",
+        "common_name": "Striped Marlin",
+        "reason": "no trained candidates available",
+        "model_confidence": "Rule-based only",
+        "notes": "Unavailable species is shown clearly in the UI; no fallback fish-location claim is made."
+      }
+    },
+    "notes": "Current mode targets tomorrow and uses latest available SST if target-day SST is unavailable."
+  }
+}

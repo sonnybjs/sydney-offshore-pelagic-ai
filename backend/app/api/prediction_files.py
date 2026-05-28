@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import gzip
 import json
 import math
 from pathlib import Path
@@ -30,6 +31,9 @@ def read_json(path: Path) -> dict:
     if not path.exists():
         raise HTTPException(status_code=404, detail=f"File not found: {path.name}")
     try:
+        if path.suffix == ".gz":
+            with gzip.open(path, "rt", encoding="utf-8") as handle:
+                return json.load(handle)
         return json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
         raise HTTPException(status_code=500, detail=f"Invalid JSON file: {path.name}") from exc
@@ -58,10 +62,13 @@ def model_metadata(species_id: str) -> dict:
 
 def available_500m_dates(species_id: str) -> list[str]:
     dates = []
-    for path in PREDICTION_500M_DIR.glob(f"*_{species_id}_500m_sydney_heatmap_top.geojson"):
-        suffix = f"_{species_id}_500m_sydney_heatmap_top.geojson"
-        if path.name.endswith(suffix):
-            dates.append(path.name[: -len(suffix)])
+    for suffix in [
+        f"_{species_id}_500m_sydney_heatmap_top.geojson",
+        f"_{species_id}_500m_sydney_heatmap_top.geojson.gz",
+    ]:
+        for path in PREDICTION_500M_DIR.glob(f"*{suffix}"):
+            if path.name.endswith(suffix):
+                dates.append(path.name[: -len(suffix)])
     return sorted(dates)
 
 
@@ -167,8 +174,11 @@ def full_grid_geojson_from_csv(csv_path: Path, species_id: str) -> dict:
 def read_prediction_geojson(path: Path, entry: dict, species_id: str, date_text: str | None = None) -> dict:
     date_text = date_text or entry.get("prediction_date") or TRAINED_DEMO_DATE
     high_res_path = PREDICTION_500M_DIR / f"{date_text}_{species_id}_500m_sydney_heatmap_top.geojson"
+    high_res_gz_path = high_res_path.with_suffix(high_res_path.suffix + ".gz")
     if high_res_path.exists():
         return read_json(high_res_path)
+    if high_res_gz_path.exists():
+        return read_json(high_res_gz_path)
     csv_path = path.with_suffix(".csv")
     if entry.get("audit_status") == "trained_under_audit" and csv_path.exists():
         return full_grid_geojson_from_csv(csv_path, species_id)
@@ -318,7 +328,9 @@ def apply_corrected_prediction_safety(manifest: dict) -> dict:
     for species_id, common_name in TRAINED_DEMO_SPECIES.items():
         date_text = TRAINED_DEMO_DATE
         file_path = f"data/processed/predictions/{date_text}_{species_id}_sydney_heatmap.geojson"
-        if not (PROJECT_ROOT / file_path).exists():
+        high_res_path = PREDICTION_500M_DIR / f"{date_text}_{species_id}_500m_sydney_heatmap_top.geojson"
+        high_res_gz_path = high_res_path.with_suffix(high_res_path.suffix + ".gz")
+        if not (PROJECT_ROOT / file_path).exists() and not high_res_path.exists() and not high_res_gz_path.exists():
             demo_species[species_id] = {
                 "available": False,
                 "species_id": species_id,

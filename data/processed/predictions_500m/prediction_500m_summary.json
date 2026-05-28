@@ -1,0 +1,495 @@
+{
+  "status": "completed",
+  "dates": [
+    "2025-08-16",
+    "2025-09-21",
+    "2025-09-22",
+    "2025-10-08",
+    "2025-10-10",
+    "2025-10-19",
+    "2025-10-20",
+    "2025-12-14",
+    "2025-12-16",
+    "2025-12-22"
+  ],
+  "resolution_deg": 0.005,
+  "resolution_m_estimate": 500,
+  "source_feature_resolution_deg": 0.05,
+  "grid_cells": 720900,
+  "outputs": [
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-08-16",
+      "grid_cells": 591189,
+      "map_geojson_features": 18611,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Good": 5154,
+        "Low": 5000,
+        "Prime": 457
+      },
+      "parquet": "data/processed/predictions_500m/2025-08-16_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-08-16_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-08-16_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-08-16",
+      "grid_cells": 581575,
+      "map_geojson_features": 18352,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Good": 5170,
+        "Low": 5000,
+        "Prime": 182
+      },
+      "parquet": "data/processed/predictions_500m/2025-08-16_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-08-16_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-08-16_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-08-16",
+      "grid_cells": 591719,
+      "map_geojson_features": 16049,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2938,
+        "Prime": 111
+      },
+      "parquet": "data/processed/predictions_500m/2025-08-16_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-08-16_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-08-16_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-09-21",
+      "grid_cells": 591189,
+      "map_geojson_features": 16661,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 3661
+      },
+      "parquet": "data/processed/predictions_500m/2025-09-21_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-09-21_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-09-21_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-09-21",
+      "grid_cells": 581575,
+      "map_geojson_features": 18252,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Good": 5050,
+        "Low": 5000,
+        "Prime": 202
+      },
+      "parquet": "data/processed/predictions_500m/2025-09-21_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-09-21_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-09-21_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-09-21",
+      "grid_cells": 591719,
+      "map_geojson_features": 15824,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2823,
+        "Prime": 1
+      },
+      "parquet": "data/processed/predictions_500m/2025-09-21_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-09-21_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-09-21_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-09-22",
+      "grid_cells": 591189,
+      "map_geojson_features": 17044,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 4044
+      },
+      "parquet": "data/processed/predictions_500m/2025-09-22_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-09-22_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-09-22_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-09-22",
+      "grid_cells": 581575,
+      "map_geojson_features": 17785,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 4693,
+        "Prime": 92
+      },
+      "parquet": "data/processed/predictions_500m/2025-09-22_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-09-22_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-09-22_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-09-22",
+      "grid_cells": 591719,
+      "map_geojson_features": 15905,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2895,
+        "Prime": 10
+      },
+      "parquet": "data/processed/predictions_500m/2025-09-22_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-09-22_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-09-22_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-10-08",
+      "grid_cells": 591189,
+      "map_geojson_features": 15929,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2929
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-08_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-08_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-08_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-10-08",
+      "grid_cells": 581575,
+      "map_geojson_features": 19224,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Good": 6000,
+        "Low": 5000,
+        "Prime": 224
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-08_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-08_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-08_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-10-08",
+      "grid_cells": 591719,
+      "map_geojson_features": 15729,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2728,
+        "Prime": 1
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-08_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-08_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-08_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-10-10",
+      "grid_cells": 591189,
+      "map_geojson_features": 15316,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2316
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-10_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-10_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-10_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-10-10",
+      "grid_cells": 581575,
+      "map_geojson_features": 19099,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Good": 5908,
+        "Low": 5000,
+        "Prime": 191
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-10_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-10_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-10_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-10-10",
+      "grid_cells": 591719,
+      "map_geojson_features": 15756,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2755,
+        "Prime": 1
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-10_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-10_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-10_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-10-19",
+      "grid_cells": 591189,
+      "map_geojson_features": 14746,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 1746
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-19_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-19_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-19_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-10-19",
+      "grid_cells": 581575,
+      "map_geojson_features": 18565,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Good": 5473,
+        "Low": 5000,
+        "Prime": 92
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-19_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-19_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-19_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-10-19",
+      "grid_cells": 591719,
+      "map_geojson_features": 15622,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2621,
+        "Prime": 1
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-19_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-19_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-19_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-10-20",
+      "grid_cells": 591189,
+      "map_geojson_features": 15368,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2368
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-20_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-20_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-20_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-10-20",
+      "grid_cells": 581575,
+      "map_geojson_features": 18378,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Good": 5086,
+        "Low": 5000,
+        "Prime": 292
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-20_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-20_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-20_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-10-20",
+      "grid_cells": 591719,
+      "map_geojson_features": 16029,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 3028,
+        "Prime": 1
+      },
+      "parquet": "data/processed/predictions_500m/2025-10-20_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-10-20_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-10-20_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-12-14",
+      "grid_cells": 591189,
+      "map_geojson_features": 13208,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 208
+      },
+      "parquet": "data/processed/predictions_500m/2025-12-14_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-12-14_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-12-14_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-12-14",
+      "grid_cells": 581575,
+      "map_geojson_features": 17627,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 4627
+      },
+      "parquet": "data/processed/predictions_500m/2025-12-14_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-12-14_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-12-14_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-12-14",
+      "grid_cells": 591719,
+      "map_geojson_features": 15946,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2945,
+        "Prime": 1
+      },
+      "parquet": "data/processed/predictions_500m/2025-12-14_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-12-14_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-12-14_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-12-16",
+      "grid_cells": 591189,
+      "map_geojson_features": 14944,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 1944
+      },
+      "parquet": "data/processed/predictions_500m/2025-12-16_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-12-16_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-12-16_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-12-16",
+      "grid_cells": 581575,
+      "map_geojson_features": 17438,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 4436,
+        "Prime": 2
+      },
+      "parquet": "data/processed/predictions_500m/2025-12-16_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-12-16_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-12-16_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-12-16",
+      "grid_cells": 591719,
+      "map_geojson_features": 15547,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2546,
+        "Prime": 1
+      },
+      "parquet": "data/processed/predictions_500m/2025-12-16_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-12-16_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-12-16_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "mahi_mahi",
+      "status": "written",
+      "date": "2025-12-22",
+      "grid_cells": 591189,
+      "map_geojson_features": 15661,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2661
+      },
+      "parquet": "data/processed/predictions_500m/2025-12-22_mahi_mahi_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-12-22_mahi_mahi_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-12-22_mahi_mahi_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "southern_bluefin_tuna",
+      "status": "written",
+      "date": "2025-12-22",
+      "grid_cells": 581575,
+      "map_geojson_features": 17479,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 4477,
+        "Prime": 2
+      },
+      "parquet": "data/processed/predictions_500m/2025-12-22_southern_bluefin_tuna_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-12-22_southern_bluefin_tuna_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-12-22_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson"
+    },
+    {
+      "species_id": "yellowtail_kingfish",
+      "status": "written",
+      "date": "2025-12-22",
+      "grid_cells": 591719,
+      "map_geojson_features": 15656,
+      "map_export_rating_distribution": {
+        "Possible": 8000,
+        "Low": 5000,
+        "Good": 2655,
+        "Prime": 1
+      },
+      "parquet": "data/processed/predictions_500m/2025-12-22_yellowtail_kingfish_500m_sydney_heatmap.parquet",
+      "top_csv": "data/processed/predictions_500m/2025-12-22_yellowtail_kingfish_500m_sydney_heatmap_top.csv",
+      "top_geojson": "data/processed/predictions_500m/2025-12-22_yellowtail_kingfish_500m_sydney_heatmap_top.geojson"
+    }
+  ],
+  "limitations": [
+    "500m grid is a display/recommendation grid using resampled source features.",
+    "This is relative habitat suitability, not exact fish location or true catch probability."
+  ]
+}
