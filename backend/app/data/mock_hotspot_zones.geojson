@@ -1,0 +1,1650 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.05,
+          -34.15
+        ]
+      },
+      "properties": {
+        "id": "yellowfin_tuna_canyon_south_demo",
+        "species_id": "yellowfin_tuna",
+        "species_name": "Yellowfin Tuna",
+        "latitude": -34.15,
+        "longitude": 152.05,
+        "area_name": "Southern canyon edge demo",
+        "score": 76.8,
+        "rating": "Prime",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.6 C, giving a 84/100 species suitability component.",
+          "The synthetic front/gradient score is 78/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: FAD proximity is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on temperature breaks and current edges near shelf/canyon structure.",
+        "ocean_summary": {
+          "sst_c": 19.6,
+          "gradient_strength": 1.63,
+          "current_speed_m_s": 0.61,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Season/month",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.75,
+          -34.25
+        ]
+      },
+      "properties": {
+        "id": "offshore_kingfish_shelf_edge_south",
+        "species_id": "offshore_kingfish",
+        "species_name": "Offshore Yellowtail Kingfish",
+        "latitude": -34.25,
+        "longitude": 151.75,
+        "area_name": "Sydney shelf edge south demo",
+        "score": 72.4,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.0 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 40/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on structure where current is pushing over reef, ridge, or seamount features.",
+        "ocean_summary": {
+          "sst_c": 19.0,
+          "gradient_strength": 0.83,
+          "current_speed_m_s": 0.57,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.25,
+          -35.45
+        ]
+      },
+      "properties": {
+        "id": "offshore_kingfish_jervis_shelf_demo",
+        "species_id": "offshore_kingfish",
+        "species_name": "Offshore Yellowtail Kingfish",
+        "latitude": -35.45,
+        "longitude": 151.25,
+        "area_name": "Jervis shelf edge context demo",
+        "score": 71.9,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 18.0 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 40/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: FAD proximity is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on structure where current is pushing over reef, ridge, or seamount features.",
+        "ocean_summary": {
+          "sst_c": 18.0,
+          "gradient_strength": 0.84,
+          "current_speed_m_s": 0.51,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.45,
+          -33.45
+        ]
+      },
+      "properties": {
+        "id": "offshore_kingfish_broken_bay_offshore",
+        "species_id": "offshore_kingfish",
+        "species_name": "Offshore Yellowtail Kingfish",
+        "latitude": -33.45,
+        "longitude": 151.45,
+        "area_name": "Broken Bay offshore demo",
+        "score": 71.8,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.3 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 5/100.",
+          "Structure/depth context is offshore_bank in shelf water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on structure where current is pushing over reef, ridge, or seamount features.",
+        "ocean_summary": {
+          "sst_c": 19.3,
+          "gradient_strength": 0.1,
+          "current_speed_m_s": 0.53,
+          "feature_context": "offshore_bank",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "POI structure",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.45,
+          -33.95
+        ]
+      },
+      "properties": {
+        "id": "offshore_kingfish_offshore_ridge_demo",
+        "species_id": "offshore_kingfish",
+        "species_name": "Offshore Yellowtail Kingfish",
+        "latitude": -33.95,
+        "longitude": 152.45,
+        "area_name": "Offshore ridge demo",
+        "score": 71.5,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 22.3 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 57/100.",
+          "Structure/depth context is seamount in very_deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: FAD proximity is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on structure where current is pushing over reef, ridge, or seamount features.",
+        "ocean_summary": {
+          "sst_c": 22.3,
+          "gradient_strength": 1.19,
+          "current_speed_m_s": 0.65,
+          "feature_context": "seamount",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "Current edge",
+          "POI structure",
+          "SLA / eddy placeholder"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.95,
+          -33.6
+        ]
+      },
+      "properties": {
+        "id": "yellowfin_tuna_canyon_north_demo",
+        "species_id": "yellowfin_tuna",
+        "species_name": "Yellowfin Tuna",
+        "latitude": -33.6,
+        "longitude": 151.95,
+        "area_name": "Northern canyon edge demo",
+        "score": 71.4,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 20.6 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 29/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on temperature breaks and current edges near shelf/canyon structure.",
+        "ocean_summary": {
+          "sst_c": 20.6,
+          "gradient_strength": 0.6,
+          "current_speed_m_s": 0.59,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "POI structure",
+          "Season/month",
+          "Shelf/canyon proximity"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.25,
+          -35.45
+        ]
+      },
+      "properties": {
+        "id": "southern_bluefin_tuna_jervis_shelf_demo",
+        "species_id": "southern_bluefin_tuna",
+        "species_name": "Southern Bluefin Tuna",
+        "latitude": -35.45,
+        "longitude": 151.25,
+        "area_name": "Jervis shelf edge context demo",
+        "score": 70.7,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 18.0 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 40/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: FAD proximity is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for cooler offshore water and strong frontal zones along the shelf edge.",
+        "ocean_summary": {
+          "sst_c": 18.0,
+          "gradient_strength": 0.84,
+          "current_speed_m_s": 0.51,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "POI structure",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.05,
+          -34.15
+        ]
+      },
+      "properties": {
+        "id": "offshore_kingfish_canyon_south_demo",
+        "species_id": "offshore_kingfish",
+        "species_name": "Offshore Yellowtail Kingfish",
+        "latitude": -34.15,
+        "longitude": 152.05,
+        "area_name": "Southern canyon edge demo",
+        "score": 69.3,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.6 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 78/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: POI structure is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on structure where current is pushing over reef, ridge, or seamount features.",
+        "ocean_summary": {
+          "sst_c": 19.6,
+          "gradient_strength": 1.63,
+          "current_speed_m_s": 0.61,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "Shelf/canyon proximity",
+          "Current edge",
+          "SST front / gradient"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.05,
+          -34.15
+        ]
+      },
+      "properties": {
+        "id": "southern_bluefin_tuna_canyon_south_demo",
+        "species_id": "southern_bluefin_tuna",
+        "species_name": "Southern Bluefin Tuna",
+        "latitude": -34.15,
+        "longitude": 152.05,
+        "area_name": "Southern canyon edge demo",
+        "score": 68.9,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.6 C, giving a 56/100 species suitability component.",
+          "The synthetic front/gradient score is 78/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: FAD proximity is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for cooler offshore water and strong frontal zones along the shelf edge.",
+        "ocean_summary": {
+          "sst_c": 19.6,
+          "gradient_strength": 1.63,
+          "current_speed_m_s": 0.61,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.45,
+          -33.95
+        ]
+      },
+      "properties": {
+        "id": "yellowfin_tuna_offshore_ridge_demo",
+        "species_id": "yellowfin_tuna",
+        "species_name": "Yellowfin Tuna",
+        "latitude": -33.95,
+        "longitude": 152.45,
+        "area_name": "Offshore ridge demo",
+        "score": 68.4,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 22.3 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 57/100.",
+          "Structure/depth context is seamount in very_deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: FAD proximity is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on temperature breaks and current edges near shelf/canyon structure.",
+        "ocean_summary": {
+          "sst_c": 22.3,
+          "gradient_strength": 1.19,
+          "current_speed_m_s": 0.65,
+          "feature_context": "seamount",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "Season/month",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.05,
+          -34.15
+        ]
+      },
+      "properties": {
+        "id": "striped_marlin_canyon_south_demo",
+        "species_id": "striped_marlin",
+        "species_name": "Striped Marlin",
+        "latitude": -34.15,
+        "longitude": 152.05,
+        "area_name": "Southern canyon edge demo",
+        "score": 68.2,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.6 C, giving a 80/100 species suitability component.",
+          "The synthetic front/gradient score is 78/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: FAD proximity is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Work warm blue water near the shelf edge where bait may collect.",
+        "ocean_summary": {
+          "sst_c": 19.6,
+          "gradient_strength": 1.63,
+          "current_speed_m_s": 0.61,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "SST suitability",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.65,
+          -33.25
+        ]
+      },
+      "properties": {
+        "id": "yellowfin_tuna_shelf_edge_north",
+        "species_id": "yellowfin_tuna",
+        "species_name": "Yellowfin Tuna",
+        "latitude": -33.25,
+        "longitude": 151.65,
+        "area_name": "Sydney shelf edge north demo",
+        "score": 66.9,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.9 C, giving a 96/100 species suitability component.",
+          "The synthetic front/gradient score is 5/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on temperature breaks and current edges near shelf/canyon structure.",
+        "ocean_summary": {
+          "sst_c": 19.9,
+          "gradient_strength": 0.1,
+          "current_speed_m_s": 0.56,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Season/month",
+          "SST suitability",
+          "Shelf/canyon proximity"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.45,
+          -33.95
+        ]
+      },
+      "properties": {
+        "id": "blue_marlin_offshore_ridge_demo",
+        "species_id": "blue_marlin",
+        "species_name": "Blue Marlin",
+        "latitude": -33.95,
+        "longitude": 152.45,
+        "area_name": "Offshore ridge demo",
+        "score": 66.9,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 22.3 C, giving a 72/100 species suitability component.",
+          "The synthetic front/gradient score is 57/100.",
+          "Structure/depth context is seamount in very_deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: FAD proximity is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise warmer deep offshore water and current edges on the oceanic side of the shelf.",
+        "ocean_summary": {
+          "sst_c": 22.3,
+          "gradient_strength": 1.19,
+          "current_speed_m_s": 0.65,
+          "feature_context": "seamount",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Bathymetry / depth class",
+          "Current edge",
+          "SST suitability"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.75,
+          -34.25
+        ]
+      },
+      "properties": {
+        "id": "southern_bluefin_tuna_shelf_edge_south",
+        "species_id": "southern_bluefin_tuna",
+        "species_name": "Southern Bluefin Tuna",
+        "latitude": -34.25,
+        "longitude": 151.75,
+        "area_name": "Sydney shelf edge south demo",
+        "score": 66.6,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.0 C, giving a 80/100 species suitability component.",
+          "The synthetic front/gradient score is 40/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for cooler offshore water and strong frontal zones along the shelf edge.",
+        "ocean_summary": {
+          "sst_c": 19.0,
+          "gradient_strength": 0.83,
+          "current_speed_m_s": 0.57,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "SST suitability"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.72,
+          -33.8
+        ]
+      },
+      "properties": {
+        "id": "yellowfin_tuna_shelf_edge_central",
+        "species_id": "yellowfin_tuna",
+        "species_name": "Yellowfin Tuna",
+        "latitude": -33.8,
+        "longitude": 151.72,
+        "area_name": "Sydney shelf edge central demo",
+        "score": 66.5,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.8 C, giving a 92/100 species suitability component.",
+          "The synthetic front/gradient score is 7/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Focus on temperature breaks and current edges near shelf/canyon structure.",
+        "ocean_summary": {
+          "sst_c": 19.8,
+          "gradient_strength": 0.15,
+          "current_speed_m_s": 0.57,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Season/month",
+          "SST suitability",
+          "Shelf/canyon proximity"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.95,
+          -33.6
+        ]
+      },
+      "properties": {
+        "id": "striped_marlin_canyon_north_demo",
+        "species_id": "striped_marlin",
+        "species_name": "Striped Marlin",
+        "latitude": -33.6,
+        "longitude": 151.95,
+        "area_name": "Northern canyon edge demo",
+        "score": 63.6,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 20.6 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 29/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Work warm blue water near the shelf edge where bait may collect.",
+        "ocean_summary": {
+          "sst_c": 20.6,
+          "gradient_strength": 0.6,
+          "current_speed_m_s": 0.59,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.65,
+          -33.25
+        ]
+      },
+      "properties": {
+        "id": "striped_marlin_shelf_edge_north",
+        "species_id": "striped_marlin",
+        "species_name": "Striped Marlin",
+        "latitude": -33.25,
+        "longitude": 151.65,
+        "area_name": "Sydney shelf edge north demo",
+        "score": 62.9,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.9 C, giving a 95/100 species suitability component.",
+          "The synthetic front/gradient score is 5/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Work warm blue water near the shelf edge where bait may collect.",
+        "ocean_summary": {
+          "sst_c": 19.9,
+          "gradient_strength": 0.1,
+          "current_speed_m_s": 0.56,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "SST suitability",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.72,
+          -33.8
+        ]
+      },
+      "properties": {
+        "id": "striped_marlin_shelf_edge_central",
+        "species_id": "striped_marlin",
+        "species_name": "Striped Marlin",
+        "latitude": -33.8,
+        "longitude": 151.72,
+        "area_name": "Sydney shelf edge central demo",
+        "score": 62.2,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.8 C, giving a 90/100 species suitability component.",
+          "The synthetic front/gradient score is 7/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Work warm blue water near the shelf edge where bait may collect.",
+        "ocean_summary": {
+          "sst_c": 19.8,
+          "gradient_strength": 0.15,
+          "current_speed_m_s": 0.57,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "SST suitability",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.45,
+          -33.95
+        ]
+      },
+      "properties": {
+        "id": "mahi_mahi_offshore_ridge_demo",
+        "species_id": "mahi_mahi",
+        "species_name": "Mahi Mahi / Dolphinfish",
+        "latitude": -33.95,
+        "longitude": 152.45,
+        "area_name": "Offshore ridge demo",
+        "score": 58.0,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 22.3 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 57/100.",
+          "Structure/depth context is seamount in very_deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: POI structure is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise FAD-like structure and current lines in warm water.",
+        "ocean_summary": {
+          "sst_c": 22.3,
+          "gradient_strength": 1.19,
+          "current_speed_m_s": 0.65,
+          "feature_context": "seamount",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "Current edge",
+          "SLA / eddy placeholder",
+          "Chlorophyll edge placeholder"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.75,
+          -34.25
+        ]
+      },
+      "properties": {
+        "id": "striped_marlin_shelf_edge_south",
+        "species_id": "striped_marlin",
+        "species_name": "Striped Marlin",
+        "latitude": -34.25,
+        "longitude": 151.75,
+        "area_name": "Sydney shelf edge south demo",
+        "score": 57.9,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.0 C, giving a 50/100 species suitability component.",
+          "The synthetic front/gradient score is 40/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Work warm blue water near the shelf edge where bait may collect.",
+        "ocean_summary": {
+          "sst_c": 19.0,
+          "gradient_strength": 0.83,
+          "current_speed_m_s": 0.57,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.45,
+          -33.95
+        ]
+      },
+      "properties": {
+        "id": "longtail_tuna_offshore_ridge_demo",
+        "species_id": "longtail_tuna",
+        "species_name": "Longtail Tuna",
+        "latitude": -33.95,
+        "longitude": 152.45,
+        "area_name": "Offshore ridge demo",
+        "score": 57.4,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 22.3 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 57/100.",
+          "Structure/depth context is seamount in very_deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: POI structure is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for warm pushes and bait/current edges around shelf-transition water.",
+        "ocean_summary": {
+          "sst_c": 22.3,
+          "gradient_strength": 1.19,
+          "current_speed_m_s": 0.65,
+          "feature_context": "seamount",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "Current edge",
+          "SLA / eddy placeholder",
+          "Chlorophyll edge placeholder"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.72,
+          -33.8
+        ]
+      },
+      "properties": {
+        "id": "southern_bluefin_tuna_shelf_edge_central",
+        "species_id": "southern_bluefin_tuna",
+        "species_name": "Southern Bluefin Tuna",
+        "latitude": -33.8,
+        "longitude": 151.72,
+        "area_name": "Sydney shelf edge central demo",
+        "score": 55.0,
+        "rating": "Good",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.8 C, giving a 48/100 species suitability component.",
+          "The synthetic front/gradient score is 7/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for cooler offshore water and strong frontal zones along the shelf edge.",
+        "ocean_summary": {
+          "sst_c": 19.8,
+          "gradient_strength": 0.15,
+          "current_speed_m_s": 0.57,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Season/month"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.15,
+          -35.1
+        ]
+      },
+      "properties": {
+        "id": "southern_bluefin_tuna_jervis_bay_context",
+        "species_id": "southern_bluefin_tuna",
+        "species_name": "Southern Bluefin Tuna",
+        "latitude": -35.1,
+        "longitude": 151.15,
+        "area_name": "Jervis Bay offshore context demo",
+        "score": 54.3,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 18.1 C, giving a 100/100 species suitability component.",
+          "The synthetic front/gradient score is 5/100.",
+          "Structure/depth context is current_edge in shelf water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for cooler offshore water and strong frontal zones along the shelf edge.",
+        "ocean_summary": {
+          "sst_c": 18.1,
+          "gradient_strength": 0.1,
+          "current_speed_m_s": 0.5,
+          "feature_context": "current_edge",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "SST suitability",
+          "Season/month",
+          "POI structure",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.05,
+          -34.15
+        ]
+      },
+      "properties": {
+        "id": "blue_marlin_canyon_south_demo",
+        "species_id": "blue_marlin",
+        "species_name": "Blue Marlin",
+        "latitude": -34.15,
+        "longitude": 152.05,
+        "area_name": "Southern canyon edge demo",
+        "score": 49.6,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.6 C, giving a 0/100 species suitability component.",
+          "The synthetic front/gradient score is 78/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST suitability is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise warmer deep offshore water and current edges on the oceanic side of the shelf.",
+        "ocean_summary": {
+          "sst_c": 19.6,
+          "gradient_strength": 1.63,
+          "current_speed_m_s": 0.61,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Current edge",
+          "SST front / gradient"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.58,
+          -33.35
+        ]
+      },
+      "properties": {
+        "id": "mahi_mahi_fad_north_demo",
+        "species_id": "mahi_mahi",
+        "species_name": "Mahi Mahi / Dolphinfish",
+        "latitude": -33.35,
+        "longitude": 151.58,
+        "area_name": "FAD-style north Sydney demo",
+        "score": 49.2,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.7 C, giving a 8/100 species suitability component.",
+          "The synthetic front/gradient score is 5/100.",
+          "Structure/depth context is fad_demo in shelf water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise FAD-like structure and current lines in warm water.",
+        "ocean_summary": {
+          "sst_c": 19.7,
+          "gradient_strength": 0.1,
+          "current_speed_m_s": 0.55,
+          "feature_context": "fad_demo",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "FAD proximity",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.55,
+          -34.35
+        ]
+      },
+      "properties": {
+        "id": "mahi_mahi_fad_south_demo",
+        "species_id": "mahi_mahi",
+        "species_name": "Mahi Mahi / Dolphinfish",
+        "latitude": -34.35,
+        "longitude": 151.55,
+        "area_name": "FAD-style south Sydney demo",
+        "score": 49.1,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 18.7 C, giving a 0/100 species suitability component.",
+          "The synthetic front/gradient score is 16/100.",
+          "Structure/depth context is fad_demo in shelf water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST suitability is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise FAD-like structure and current lines in warm water.",
+        "ocean_summary": {
+          "sst_c": 18.7,
+          "gradient_strength": 0.34,
+          "current_speed_m_s": 0.55,
+          "feature_context": "fad_demo",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "FAD proximity",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.55,
+          -33.85
+        ]
+      },
+      "properties": {
+        "id": "mahi_mahi_fad_central_demo",
+        "species_id": "mahi_mahi",
+        "species_name": "Mahi Mahi / Dolphinfish",
+        "latitude": -33.85,
+        "longitude": 151.55,
+        "area_name": "FAD-style central Sydney demo",
+        "score": 47.4,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.3 C, giving a 0/100 species suitability component.",
+          "The synthetic front/gradient score is 5/100.",
+          "Structure/depth context is fad_demo in shelf water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST suitability is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise FAD-like structure and current lines in warm water.",
+        "ocean_summary": {
+          "sst_c": 19.3,
+          "gradient_strength": 0.1,
+          "current_speed_m_s": 0.55,
+          "feature_context": "fad_demo",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "FAD proximity",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.05,
+          -34.15
+        ]
+      },
+      "properties": {
+        "id": "mahi_mahi_canyon_south_demo",
+        "species_id": "mahi_mahi",
+        "species_name": "Mahi Mahi / Dolphinfish",
+        "latitude": -34.15,
+        "longitude": 152.05,
+        "area_name": "Southern canyon edge demo",
+        "score": 46.8,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.6 C, giving a 4/100 species suitability component.",
+          "The synthetic front/gradient score is 78/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST suitability is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise FAD-like structure and current lines in warm water.",
+        "ocean_summary": {
+          "sst_c": 19.6,
+          "gradient_strength": 1.63,
+          "current_speed_m_s": 0.61,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Current edge",
+          "SST front / gradient"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.05,
+          -34.15
+        ]
+      },
+      "properties": {
+        "id": "longtail_tuna_canyon_south_demo",
+        "species_id": "longtail_tuna",
+        "species_name": "Longtail Tuna",
+        "latitude": -34.15,
+        "longitude": 152.05,
+        "area_name": "Southern canyon edge demo",
+        "score": 46.5,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.6 C, giving a 20/100 species suitability component.",
+          "The synthetic front/gradient score is 78/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST suitability is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for warm pushes and bait/current edges around shelf-transition water.",
+        "ocean_summary": {
+          "sst_c": 19.6,
+          "gradient_strength": 1.63,
+          "current_speed_m_s": 0.61,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "Shelf/canyon proximity",
+          "Current edge",
+          "SST front / gradient",
+          "SLA / eddy placeholder"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.58,
+          -33.35
+        ]
+      },
+      "properties": {
+        "id": "longtail_tuna_fad_north_demo",
+        "species_id": "longtail_tuna",
+        "species_name": "Longtail Tuna",
+        "latitude": -33.35,
+        "longitude": 151.58,
+        "area_name": "FAD-style north Sydney demo",
+        "score": 46.3,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.7 C, giving a 23/100 species suitability component.",
+          "The synthetic front/gradient score is 5/100.",
+          "Structure/depth context is fad_demo in shelf water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for warm pushes and bait/current edges around shelf-transition water.",
+        "ocean_summary": {
+          "sst_c": 19.7,
+          "gradient_strength": 0.1,
+          "current_speed_m_s": 0.55,
+          "feature_context": "fad_demo",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "FAD proximity",
+          "Bathymetry / depth class",
+          "Current edge"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.95,
+          -33.6
+        ]
+      },
+      "properties": {
+        "id": "longtail_tuna_canyon_north_demo",
+        "species_id": "longtail_tuna",
+        "species_name": "Longtail Tuna",
+        "latitude": -33.6,
+        "longitude": 151.95,
+        "area_name": "Northern canyon edge demo",
+        "score": 44.8,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 20.6 C, giving a 53/100 species suitability component.",
+          "The synthetic front/gradient score is 29/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for warm pushes and bait/current edges around shelf-transition water.",
+        "ocean_summary": {
+          "sst_c": 20.6,
+          "gradient_strength": 0.6,
+          "current_speed_m_s": 0.59,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "Shelf/canyon proximity",
+          "Current edge",
+          "SST suitability",
+          "Season/month"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.8,
+          -34.05
+        ]
+      },
+      "properties": {
+        "id": "blue_marlin_browns_mountain_demo",
+        "species_id": "blue_marlin",
+        "species_name": "Blue Marlin",
+        "latitude": -34.05,
+        "longitude": 151.8,
+        "area_name": "Browns Mountain area demo",
+        "score": 44.3,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.4 C, giving a 0/100 species suitability component.",
+          "The synthetic front/gradient score is 35/100.",
+          "Structure/depth context is seamount in very_deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST suitability is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise warmer deep offshore water and current edges on the oceanic side of the shelf.",
+        "ocean_summary": {
+          "sst_c": 19.4,
+          "gradient_strength": 0.73,
+          "current_speed_m_s": 0.58,
+          "feature_context": "seamount",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Bathymetry / depth class",
+          "Current edge",
+          "Season/month"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.95,
+          -33.6
+        ]
+      },
+      "properties": {
+        "id": "blue_marlin_canyon_north_demo",
+        "species_id": "blue_marlin",
+        "species_name": "Blue Marlin",
+        "latitude": -33.6,
+        "longitude": 151.95,
+        "area_name": "Northern canyon edge demo",
+        "score": 43.6,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 20.6 C, giving a 4/100 species suitability component.",
+          "The synthetic front/gradient score is 29/100.",
+          "Structure/depth context is canyon in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST suitability is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise warmer deep offshore water and current edges on the oceanic side of the shelf.",
+        "ocean_summary": {
+          "sst_c": 20.6,
+          "gradient_strength": 0.6,
+          "current_speed_m_s": 0.59,
+          "feature_context": "canyon",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Current edge",
+          "POI structure"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.65,
+          -33.25
+        ]
+      },
+      "properties": {
+        "id": "longtail_tuna_shelf_edge_north",
+        "species_id": "longtail_tuna",
+        "species_name": "Longtail Tuna",
+        "latitude": -33.25,
+        "longitude": 151.65,
+        "area_name": "Sydney shelf edge north demo",
+        "score": 43.4,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.9 C, giving a 30/100 species suitability component.",
+          "The synthetic front/gradient score is 5/100.",
+          "Structure/depth context is shelf_break in shelf_break water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST front / gradient is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Look for warm pushes and bait/current edges around shelf-transition water.",
+        "ocean_summary": {
+          "sst_c": 19.9,
+          "gradient_strength": 0.1,
+          "current_speed_m_s": 0.56,
+          "feature_context": "shelf_break",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "Shelf/canyon proximity",
+          "Bathymetry / depth class",
+          "Current edge",
+          "POI structure"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.95,
+          -32.8
+        ]
+      },
+      "properties": {
+        "id": "blue_marlin_northern_current_edge_demo",
+        "species_id": "blue_marlin",
+        "species_name": "Blue Marlin",
+        "latitude": -32.8,
+        "longitude": 151.95,
+        "area_name": "Northern current edge demo",
+        "score": 41.3,
+        "rating": "Possible",
+        "confidence": "Low",
+        "explanation": [
+          "SST is 19.8 C, giving a 0/100 species suitability component.",
+          "The synthetic front/gradient score is 5/100.",
+          "Structure/depth context is current_edge in deep water.",
+          "Confidence is limited because this v0.1 demo uses synthetic ocean data.",
+          "Limiting factor: SST suitability is weak in this demo scenario."
+        ],
+        "suggested_strategy": "Prioritise warmer deep offshore water and current edges on the oceanic side of the shelf.",
+        "ocean_summary": {
+          "sst_c": 19.8,
+          "gradient_strength": 0.1,
+          "current_speed_m_s": 0.59,
+          "feature_context": "current_edge",
+          "data_source": "mock"
+        },
+        "key_drivers": [
+          "POI structure",
+          "Bathymetry / depth class",
+          "Current edge",
+          "Season/month"
+        ],
+        "caution_notes": [
+          "Demo coordinates are approximate and not verified fishing marks.",
+          "This is not navigation, marine safety, legal, or catch guarantee advice."
+        ],
+        "demo_only": true
+      }
+    }
+  ]
+}

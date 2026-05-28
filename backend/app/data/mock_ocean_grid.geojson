@@ -1,0 +1,838 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9,
+          -36.1
+        ]
+      },
+      "properties": {
+        "sst_c": 17.4,
+        "sst_category": "cool",
+        "gradient_strength": 0.6,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.4,
+          -36.1
+        ]
+      },
+      "properties": {
+        "sst_c": 19.8,
+        "sst_category": "moderate",
+        "gradient_strength": 1.65,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.9,
+          -36.1
+        ]
+      },
+      "properties": {
+        "sst_c": 20.7,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.4,
+          -36.1
+        ]
+      },
+      "properties": {
+        "sst_c": 21.5,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -36.1
+        ]
+      },
+      "properties": {
+        "sst_c": 22.4,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.4,
+          -36.1
+        ]
+      },
+      "properties": {
+        "sst_c": 23.3,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.9,
+          -36.1
+        ]
+      },
+      "properties": {
+        "sst_c": 24.1,
+        "sst_category": "very_warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9,
+          -35.5
+        ]
+      },
+      "properties": {
+        "sst_c": 17.0,
+        "sst_category": "cool",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.4,
+          -35.5
+        ]
+      },
+      "properties": {
+        "sst_c": 18.5,
+        "sst_category": "moderate",
+        "gradient_strength": 1.37,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.9,
+          -35.5
+        ]
+      },
+      "properties": {
+        "sst_c": 21.5,
+        "sst_category": "warm",
+        "gradient_strength": 0.88,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.4,
+          -35.5
+        ]
+      },
+      "properties": {
+        "sst_c": 22.1,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -35.5
+        ]
+      },
+      "properties": {
+        "sst_c": 22.2,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.4,
+          -35.5
+        ]
+      },
+      "properties": {
+        "sst_c": 22.8,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.9,
+          -35.5
+        ]
+      },
+      "properties": {
+        "sst_c": 24.2,
+        "sst_category": "very_warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9,
+          -34.9
+        ]
+      },
+      "properties": {
+        "sst_c": 18.0,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.4,
+          -34.9
+        ]
+      },
+      "properties": {
+        "sst_c": 18.6,
+        "sst_category": "moderate",
+        "gradient_strength": 0.59,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.9,
+          -34.9
+        ]
+      },
+      "properties": {
+        "sst_c": 20.8,
+        "sst_category": "moderate",
+        "gradient_strength": 1.66,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.4,
+          -34.9
+        ]
+      },
+      "properties": {
+        "sst_c": 21.7,
+        "sst_category": "warm",
+        "gradient_strength": 0.11,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -34.9
+        ]
+      },
+      "properties": {
+        "sst_c": 22.9,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.4,
+          -34.9
+        ]
+      },
+      "properties": {
+        "sst_c": 23.9,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.9,
+          -34.9
+        ]
+      },
+      "properties": {
+        "sst_c": 24.5,
+        "sst_category": "very_warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9,
+          -34.3
+        ]
+      },
+      "properties": {
+        "sst_c": 18.4,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.4,
+          -34.3
+        ]
+      },
+      "properties": {
+        "sst_c": 18.7,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.9,
+          -34.3
+        ]
+      },
+      "properties": {
+        "sst_c": 19.1,
+        "sst_category": "moderate",
+        "gradient_strength": 1.36,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.4,
+          -34.3
+        ]
+      },
+      "properties": {
+        "sst_c": 21.8,
+        "sst_category": "warm",
+        "gradient_strength": 0.89,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -34.3
+        ]
+      },
+      "properties": {
+        "sst_c": 23.2,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.4,
+          -34.3
+        ]
+      },
+      "properties": {
+        "sst_c": 24.3,
+        "sst_category": "very_warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.9,
+          -34.3
+        ]
+      },
+      "properties": {
+        "sst_c": 24.7,
+        "sst_category": "very_warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9,
+          -33.7
+        ]
+      },
+      "properties": {
+        "sst_c": 17.6,
+        "sst_category": "cool",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.4,
+          -33.7
+        ]
+      },
+      "properties": {
+        "sst_c": 19.0,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.9,
+          -33.7
+        ]
+      },
+      "properties": {
+        "sst_c": 20.3,
+        "sst_category": "moderate",
+        "gradient_strength": 0.58,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.4,
+          -33.7
+        ]
+      },
+      "properties": {
+        "sst_c": 22.6,
+        "sst_category": "warm",
+        "gradient_strength": 1.67,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -33.7
+        ]
+      },
+      "properties": {
+        "sst_c": 22.8,
+        "sst_category": "warm",
+        "gradient_strength": 0.12,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.4,
+          -33.7
+        ]
+      },
+      "properties": {
+        "sst_c": 23.4,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.9,
+          -33.7
+        ]
+      },
+      "properties": {
+        "sst_c": 24.7,
+        "sst_category": "very_warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9,
+          -33.1
+        ]
+      },
+      "properties": {
+        "sst_c": 18.0,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.4,
+          -33.1
+        ]
+      },
+      "properties": {
+        "sst_c": 19.2,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.9,
+          -33.1
+        ]
+      },
+      "properties": {
+        "sst_c": 20.3,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.4,
+          -33.1
+        ]
+      },
+      "properties": {
+        "sst_c": 21.0,
+        "sst_category": "warm",
+        "gradient_strength": 1.35,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -33.1
+        ]
+      },
+      "properties": {
+        "sst_c": 23.1,
+        "sst_category": "warm",
+        "gradient_strength": 0.9,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.4,
+          -33.1
+        ]
+      },
+      "properties": {
+        "sst_c": 23.8,
+        "sst_category": "warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.9,
+          -33.1
+        ]
+      },
+      "properties": {
+        "sst_c": 24.9,
+        "sst_category": "very_warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9,
+          -32.5
+        ]
+      },
+      "properties": {
+        "sst_c": 19.0,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.4,
+          -32.5
+        ]
+      },
+      "properties": {
+        "sst_c": 19.2,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.9,
+          -32.5
+        ]
+      },
+      "properties": {
+        "sst_c": 19.5,
+        "sst_category": "moderate",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.4,
+          -32.5
+        ]
+      },
+      "properties": {
+        "sst_c": 20.6,
+        "sst_category": "moderate",
+        "gradient_strength": 0.57,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -32.5
+        ]
+      },
+      "properties": {
+        "sst_c": 23.8,
+        "sst_category": "warm",
+        "gradient_strength": 1.68,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.4,
+          -32.5
+        ]
+      },
+      "properties": {
+        "sst_c": 25.0,
+        "sst_category": "very_warm",
+        "gradient_strength": 0.13,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.9,
+          -32.5
+        ]
+      },
+      "properties": {
+        "sst_c": 25.2,
+        "sst_category": "very_warm",
+        "gradient_strength": 0.1,
+        "notes": "Synthetic SST point for v0.1 habitat scoring demo.",
+        "demo_only": true
+      }
+    }
+  ]
+}

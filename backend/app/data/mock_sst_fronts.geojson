@@ -1,0 +1,69 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.05,
+            -36.3
+          ],
+          [
+            151.55,
+            -35.3
+          ],
+          [
+            152.0,
+            -34.3
+          ],
+          [
+            152.45,
+            -33.3
+          ],
+          [
+            152.85,
+            -32.3
+          ]
+        ]
+      },
+      "properties": {
+        "front_strength": "moderate",
+        "sst_change_c": 1.8,
+        "notes": "Synthetic SST front/edge for v0.1.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            151.55,
+            -35.8
+          ],
+          [
+            152.05,
+            -34.9
+          ],
+          [
+            152.55,
+            -34.0
+          ],
+          [
+            153.15,
+            -33.1
+          ]
+        ]
+      },
+      "properties": {
+        "front_strength": "weak eddy edge",
+        "sst_change_c": 0.9,
+        "notes": "Synthetic SST front/edge for v0.1.",
+        "demo_only": true
+      }
+    }
+  ]
+}

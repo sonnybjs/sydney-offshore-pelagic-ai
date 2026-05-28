@@ -1,0 +1,345 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.3,
+          -35.8
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.49,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.1,
+          -35.8
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.58,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -35.8
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.68,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.7,
+          -35.8
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.77,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.3,
+          -35.0
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.49,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.1,
+          -35.0
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.58,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -35.0
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.68,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.7,
+          -35.0
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.77,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.3,
+          -34.2
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.49,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.1,
+          -34.2
+        ]
+      },
+      "properties": {
+        "direction_degrees": 95,
+        "speed_m_s": 0.76,
+        "direction_label": "eastward eddy edge",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -34.2
+        ]
+      },
+      "properties": {
+        "direction_degrees": 95,
+        "speed_m_s": 0.86,
+        "direction_label": "eastward eddy edge",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.7,
+          -34.2
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.77,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.3,
+          -33.4
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.49,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.1,
+          -33.4
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.58,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -33.4
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.68,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.7,
+          -33.4
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.77,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.3,
+          -32.6
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.49,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.1,
+          -32.6
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.58,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9,
+          -32.6
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.68,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.7,
+          -32.6
+        ]
+      },
+      "properties": {
+        "direction_degrees": 135,
+        "speed_m_s": 0.77,
+        "direction_label": "south-east",
+        "notes": "Synthetic current vector, broadly EAC-like offshore flow.",
+        "demo_only": true
+      }
+    }
+  ]
+}
