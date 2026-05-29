@@ -51,30 +51,30 @@
   },
   "current": {
     "mode": "current",
-    "target_date": "2026-05-28",
+    "target_date": "2026-05-29",
+    "available_dates": [
+      "2026-05-28",
+      "2026-05-29"
+    ],
     "species": {
-      "yellowfin_tuna": {
-        "available": false,
-        "species_id": "yellowfin_tuna",
-        "common_name": "Yellowfin Tuna",
-        "reason": "no trained candidates available",
-        "model_confidence": "Rule-based only",
-        "notes": "Unavailable species is shown clearly in the UI; no fallback fish-location claim is made."
-      },
       "mahi_mahi": {
         "available": true,
         "mode": "current",
         "species_id": "mahi_mahi",
         "common_name": "Mahi Mahi / Dolphinfish",
-        "prediction_date": "2026-05-28",
-        "target_date": "2026-05-28",
-        "file_path": "data/processed/predictions/2026-05-28_mahi_mahi_current_sydney_heatmap.geojson",
-        "model_type": "logistic_regression_balanced",
+        "prediction_date": "2026-05-29",
+        "target_date": "2026-05-29",
+        "available_dates": [
+          "2026-05-28",
+          "2026-05-29"
+        ],
+        "file_path": "data/processed/predictions_500m/2026-05-29_mahi_mahi_500m_sydney_heatmap_top.geojson",
+        "model_type": "current_inference",
         "model_confidence": "Low",
-        "feature_set_name": "minimum_sst_bathy",
+        "feature_set_name": "current_sst_bathy_structure",
         "data_source_dates": {
-          "sst": "2026-05-25",
-          "physics": null,
+          "sst": "2026-05-26",
+          "physics": "2026-05-25",
           "chl": null,
           "bathymetry": "static"
         },
@@ -84,19 +84,82 @@
           "poi_markers",
           "sst_front_proxy"
         ],
-        "notes": "Model under audit: nearshore saturation detected. Do not use as real prediction. Model under audit: nearshore saturation detected. Do not use as real prediction. Model under audit: nearshore saturation detected. Do not use as real prediction. Relative habitat suitability from a presence/background model; not exact fish location or guaranteed catch.",
-        "audit_status": "under_audit_nearshore_saturation_detected",
-        "warning": "Model under audit: nearshore saturation detected. Do not use as real prediction."
+        "audit_status": "current_inference_under_audit",
+        "warning": "Current/tomorrow output uses latest available environmental data where target-day sources are unavailable.",
+        "score_explanation": "Score is relative habitat suitability / hotspot score, not exact fish location or true catch probability.",
+        "grid_resolution_m_estimate": 500,
+        "source_resolution_note": "500m display grid resampled from source environmental features.",
+        "notes": "Today/tomorrow inference is experimental and should be used as decision-support only."
       },
-      "striped_marlin": {
-        "available": false,
-        "species_id": "striped_marlin",
-        "common_name": "Striped Marlin",
-        "reason": "no trained candidates available",
-        "model_confidence": "Rule-based only",
-        "notes": "Unavailable species is shown clearly in the UI; no fallback fish-location claim is made."
+      "southern_bluefin_tuna": {
+        "available": true,
+        "mode": "current",
+        "species_id": "southern_bluefin_tuna",
+        "common_name": "Southern Bluefin Tuna",
+        "prediction_date": "2026-05-29",
+        "target_date": "2026-05-29",
+        "available_dates": [
+          "2026-05-28",
+          "2026-05-29"
+        ],
+        "file_path": "data/processed/predictions_500m/2026-05-29_southern_bluefin_tuna_500m_sydney_heatmap_top.geojson",
+        "model_type": "current_inference",
+        "model_confidence": "Low",
+        "feature_set_name": "current_sst_bathy_structure",
+        "data_source_dates": {
+          "sst": "2026-05-26",
+          "physics": "2026-05-25",
+          "chl": null,
+          "bathymetry": "static"
+        },
+        "available_layers": [
+          "habitat_heatmap",
+          "hotspot_points",
+          "poi_markers",
+          "sst_front_proxy"
+        ],
+        "audit_status": "current_inference_under_audit",
+        "warning": "Current/tomorrow output uses latest available environmental data where target-day sources are unavailable.",
+        "score_explanation": "Score is relative habitat suitability / hotspot score, not exact fish location or true catch probability.",
+        "grid_resolution_m_estimate": 500,
+        "source_resolution_note": "500m display grid resampled from source environmental features.",
+        "notes": "Today/tomorrow inference is experimental and should be used as decision-support only."
+      },
+      "yellowtail_kingfish": {
+        "available": true,
+        "mode": "current",
+        "species_id": "yellowtail_kingfish",
+        "common_name": "Yellowtail Kingfish",
+        "prediction_date": "2026-05-29",
+        "target_date": "2026-05-29",
+        "available_dates": [
+          "2026-05-28",
+          "2026-05-29"
+        ],
+        "file_path": "data/processed/predictions_500m/2026-05-29_yellowtail_kingfish_500m_sydney_heatmap_top.geojson",
+        "model_type": "current_inference",
+        "model_confidence": "Low",
+        "feature_set_name": "current_sst_bathy_structure",
+        "data_source_dates": {
+          "sst": "2026-05-26",
+          "physics": "2026-05-25",
+          "chl": null,
+          "bathymetry": "static"
+        },
+        "available_layers": [
+          "habitat_heatmap",
+          "hotspot_points",
+          "poi_markers",
+          "sst_front_proxy"
+        ],
+        "audit_status": "current_inference_under_audit",
+        "warning": "Current/tomorrow output uses latest available environmental data where target-day sources are unavailable.",
+        "score_explanation": "Score is relative habitat suitability / hotspot score, not exact fish location or true catch probability.",
+        "grid_resolution_m_estimate": 500,
+        "source_resolution_note": "500m display grid resampled from source environmental features.",
+        "notes": "Today/tomorrow inference is experimental and should be used as decision-support only."
       }
     },
-    "notes": "Current mode targets tomorrow and uses latest available SST if target-day SST is unavailable."
+    "notes": "Current mode includes today and tomorrow if generated; SST may use the latest available source date."
   }
 }

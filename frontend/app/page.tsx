@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "../components/Header";
 import { LayerControl } from "../components/LayerControl";
 import { PredictionDatePanel } from "../components/PredictionDatePanel";
@@ -8,9 +8,10 @@ import { PredictionDisclaimer } from "../components/PredictionDisclaimer";
 import { PredictionHotspotList } from "../components/PredictionHotspotList";
 import { PredictionMapView } from "../components/PredictionMapView";
 import { PredictionModeToggle } from "../components/PredictionModeToggle";
+import { ModelSourceToggle } from "../components/ModelSourceToggle";
 import { fetchPois, fetchPredictionManifest, fetchPredictionMap, fetchPredictionSpots } from "../lib/api";
 import { fallbackPois } from "../lib/mockFallback";
-import type { LayerState, POI, PredictionManifest, PredictionMapResponse, PredictionMode } from "../lib/types";
+import type { LayerState, ModelSource, POI, PredictionManifest, PredictionMapResponse, PredictionMode } from "../lib/types";
 
 const speciesOptions = [
   { id: "mahi_mahi", label: "Mahi Mahi" },
@@ -20,6 +21,7 @@ const speciesOptions = [
 
 export default function Home() {
   const [mode, setMode] = useState<PredictionMode>("demo");
+  const [modelSource, setModelSource] = useState<ModelSource>("scikit_learn");
   const [selectedSpecies, setSelectedSpecies] = useState("mahi_mahi");
   const [manifest, setManifest] = useState<PredictionManifest | null>(null);
   const [prediction, setPrediction] = useState<PredictionMapResponse | null>(null);
@@ -31,6 +33,7 @@ export default function Home() {
   const [selectedSpotIndex, setSelectedSpotIndex] = useState<number | null>(null);
   const [message, setMessage] = useState("");
   const [layers, setLayers] = useState<LayerState>({ heatmap: true, hotspots: true, sst: false, fronts: false, currents: false, pois: true, shelf: true });
+  const requestSeq = useRef(0);
 
   useEffect(() => {
     Promise.all([fetchPredictionManifest(), fetchPois()]).then(([manifestResult, poiResult]) => {
@@ -48,6 +51,10 @@ export default function Home() {
     const entry = manifest?.[mode]?.species?.[selectedSpecies];
     return (entry?.available_dates || [entry?.prediction_date]).filter(Boolean) as string[];
   }, [manifest, mode, selectedSpecies]);
+  const currentDateOptions = useMemo(() => {
+    const entry = manifest?.current?.species?.[selectedSpecies];
+    return (entry?.available_dates || manifest?.current?.available_dates || [entry?.prediction_date]).filter(Boolean) as string[];
+  }, [manifest, selectedSpecies]);
 
   useEffect(() => {
     if (!dateOptions.length) {
@@ -58,9 +65,13 @@ export default function Home() {
   }, [dateOptions, selectedDate]);
 
   useEffect(() => {
+    const seq = requestSeq.current + 1;
+    requestSeq.current = seq;
     setSelectedIndex(null);
     setSelectedSpotIndex(null);
-    setMessage("");
+    setPrediction(null);
+    setSpots(null);
+    setMessage(`Loading ${modelSource === "deep_learning" ? "deep learning" : "scikit-learn"} prediction...`);
     const entry = manifest?.[mode]?.species?.[selectedSpecies];
     if (entry && !entry.available) {
       setPrediction(null);
@@ -68,7 +79,8 @@ export default function Home() {
       setMessage(entry.reason || "Prediction unavailable for this species.");
       return;
     }
-    Promise.all([fetchPredictionMap(mode, selectedSpecies, selectedDate), fetchPredictionSpots(mode, selectedSpecies, 500, selectedDate)]).then(([result, spotResult]) => {
+    Promise.all([fetchPredictionMap(mode, selectedSpecies, selectedDate, modelSource), fetchPredictionSpots(mode, selectedSpecies, 500, selectedDate, modelSource)]).then(([result, spotResult]) => {
+      if (requestSeq.current !== seq) return;
       setOffline((current) => current || result.offline);
       if (!result.data) {
         setPrediction(null);
@@ -78,14 +90,15 @@ export default function Home() {
       }
       setPrediction(result.data);
       setSpots(spotResult.data);
+      setMessage("");
     });
-  }, [mode, selectedSpecies, selectedDate, manifest]);
+  }, [mode, selectedSpecies, selectedDate, modelSource, manifest]);
 
   const selectedEntry = manifest?.[mode]?.species?.[selectedSpecies];
   const subtitle = useMemo(() => {
-    if (mode === "current") return "Tomorrow target: 2026-05-28";
+    if (mode === "current") return selectedDate ? `Current inference target: ${selectedDate}` : "Current inference target";
     return "Historical trained-model prediction demo";
-  }, [mode]);
+  }, [mode, selectedDate]);
 
   return (
     <main>
@@ -94,8 +107,31 @@ export default function Home() {
         <aside className="leftRail">
           <section className="panel">
             <h2>Prediction Mode</h2>
-            <PredictionModeToggle mode={mode} onMode={setMode} />
+            <PredictionModeToggle
+              mode={mode}
+              onMode={setMode}
+              selectedDate={selectedDate}
+              todayDate={currentDateOptions[0] || null}
+              tomorrowDate={currentDateOptions[currentDateOptions.length - 1] || null}
+              onToday={() => {
+                setMode("current");
+                if (currentDateOptions[0]) setSelectedDate(currentDateOptions[0]);
+              }}
+              onTomorrow={() => {
+                setMode("current");
+                if (currentDateOptions.length) setSelectedDate(currentDateOptions[currentDateOptions.length - 1]);
+              }}
+            />
             <p className="tinyNote">{subtitle}</p>
+          </section>
+          <section className="panel">
+            <h2>Model Source</h2>
+            <ModelSourceToggle modelSource={modelSource} onModelSource={setModelSource} />
+            <p className="tinyNote">
+              {modelSource === "deep_learning"
+                ? "Experimental PyTorch MLP sidecar model."
+                : "Original scikit-learn selected model output."}
+            </p>
           </section>
           <section className="panel">
             <h2>Species</h2>
@@ -133,7 +169,17 @@ export default function Home() {
         <section className="centerStack">
           {message && <div className="predictionNotice">{message}</div>}
           {selectedEntry?.available === false && <div className="predictionNotice">{selectedEntry.reason}</div>}
-          <PredictionMapView geojson={prediction?.geojson || null} spots={spots?.geojson || null} pois={pois} layers={layers} selectedIndex={selectedIndex} selectedSpotIndex={selectedSpotIndex} onSelect={setSelectedIndex} onSpotSelect={setSelectedSpotIndex} />
+          <PredictionMapView
+            key={`${mode}-${modelSource}-${selectedSpecies}-${selectedDate || "latest"}`}
+            geojson={prediction?.geojson || null}
+            spots={spots?.geojson || null}
+            pois={pois}
+            layers={layers}
+            selectedIndex={selectedIndex}
+            selectedSpotIndex={selectedSpotIndex}
+            onSelect={setSelectedIndex}
+            onSpotSelect={setSelectedSpotIndex}
+          />
           <PredictionDisclaimer />
         </section>
         <aside className="rightRail">

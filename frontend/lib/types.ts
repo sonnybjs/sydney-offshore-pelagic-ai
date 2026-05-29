@@ -106,6 +106,7 @@ export type FrontProperties = {
 };
 
 export type PredictionMode = "demo" | "current";
+export type ModelSource = "scikit_learn" | "deep_learning";
 
 export type PredictionSpeciesManifest = {
   available: boolean;
@@ -135,7 +136,7 @@ export type PredictionSpeciesManifest = {
 
 export type PredictionManifest = {
   demo: { mode: "demo"; date?: string | null; species: Record<string, PredictionSpeciesManifest>; notes?: string };
-  current: { mode: "current"; target_date?: string; species: Record<string, PredictionSpeciesManifest>; notes?: string };
+  current: { mode: "current"; target_date?: string; available_dates?: string[]; species: Record<string, PredictionSpeciesManifest>; notes?: string };
 };
 
 export type PredictionProperties = {
@@ -150,6 +151,7 @@ export type PredictionProperties = {
   score: number;
   rating: string;
   confidence: string;
+  model_source?: ModelSource;
   model_type?: string;
   feature_set_name?: string;
   top_drivers?: string[];
@@ -188,6 +190,7 @@ export type PredictionProperties = {
 export type PredictionMapResponse = {
   metadata: {
     mode: PredictionMode;
+    model_source?: ModelSource;
     species_id: string;
     common_name: string;
     prediction_date?: string;

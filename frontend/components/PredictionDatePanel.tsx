@@ -18,6 +18,7 @@ export function PredictionDatePanel({
       <h2>Prediction Status</h2>
       <div className="metricPanel">
         <div className="metricRow"><span>Mode</span><strong>{mode === "demo" ? "DEMO" : "CURRENT / TOMORROW"}</strong></div>
+        <div className="metricRow"><span>Model source</span><strong>{meta?.model_source === "deep_learning" ? "Deep Learning" : "Scikit-learn"}</strong></div>
         <div className="metricRow"><span>Species</span><strong>{entry?.common_name || speciesId}</strong></div>
         <div className="metricRow"><span>Target date</span><strong>{meta?.target_date || entry?.target_date || "Unavailable"}</strong></div>
         <div className="metricRow"><span>Prediction date</span><strong>{meta?.prediction_date || entry?.prediction_date || "Unavailable"}</strong></div>

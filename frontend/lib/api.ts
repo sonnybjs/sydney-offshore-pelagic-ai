@@ -1,5 +1,5 @@
 import { fallbackFronts, fallbackHotspots, fallbackOcean, fallbackPois, fallbackSpecies } from "./mockFallback";
-import type { FeatureCollection, FrontProperties, HotspotProperties, OceanCondition, POI, PredictionMapResponse, PredictionManifest, PredictionMode, SpeciesProfile } from "./types";
+import type { FeatureCollection, FrontProperties, HotspotProperties, ModelSource, OceanCondition, POI, PredictionMapResponse, PredictionManifest, PredictionMode, SpeciesProfile } from "./types";
 
 function defaultApiBase() {
   return "/api/backend";
@@ -44,12 +44,12 @@ export function fetchPredictionManifest() {
   });
 }
 
-export function fetchPredictionMap(mode: PredictionMode, speciesId: string, date?: string | null) {
+export function fetchPredictionMap(mode: PredictionMode, speciesId: string, date?: string | null, modelSource: ModelSource = "scikit_learn") {
   const dateParam = date ? `&date=${date}` : "";
-  return getJson<PredictionMapResponse | null>(`/predictions/map?mode=${mode}&species_id=${speciesId}${dateParam}`, null);
+  return getJson<PredictionMapResponse | null>(`/predictions/map?mode=${mode}&species_id=${speciesId}${dateParam}&model_source=${modelSource}`, null);
 }
 
-export function fetchPredictionSpots(mode: PredictionMode, speciesId: string, radiusM = 500, date?: string | null) {
+export function fetchPredictionSpots(mode: PredictionMode, speciesId: string, radiusM = 500, date?: string | null, modelSource: ModelSource = "scikit_learn") {
   const dateParam = date ? `&date=${date}` : "";
-  return getJson<PredictionMapResponse | null>(`/predictions/spots?mode=${mode}&species_id=${speciesId}${dateParam}&radius_m=${radiusM}&limit=30&min_separation_km=4`, null);
+  return getJson<PredictionMapResponse | null>(`/predictions/spots?mode=${mode}&species_id=${speciesId}${dateParam}&model_source=${modelSource}&radius_m=${radiusM}&limit=30&min_separation_km=4`, null);
 }

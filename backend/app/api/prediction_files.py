@@ -13,6 +13,7 @@ router = APIRouter()
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 PREDICTION_DIR = PROJECT_ROOT / "data" / "processed" / "predictions"
 PREDICTION_500M_DIR = PROJECT_ROOT / "data" / "processed" / "predictions_500m"
+PREDICTION_500M_DEEP_DIR = PROJECT_ROOT / "data" / "processed" / "predictions_500m_deep"
 CORRECTED_PREDICTION_DIR = PROJECT_ROOT / "data" / "processed" / "predictions_corrected"
 MANIFEST_PATH = PREDICTION_DIR / "prediction_manifest.json"
 CORRECTED_SUMMARY_PATH = CORRECTED_PREDICTION_DIR / "corrected_prediction_summary.json"
@@ -61,12 +62,18 @@ def model_metadata(species_id: str) -> dict:
 
 
 def available_500m_dates(species_id: str) -> list[str]:
+    return available_500m_dates_for_source(species_id, "scikit_learn")
+
+
+def available_500m_dates_for_source(species_id: str, model_source: str = "scikit_learn") -> list[str]:
+    directory = PREDICTION_500M_DEEP_DIR if model_source == "deep_learning" else PREDICTION_500M_DIR
+    stem = "500m_deep_sydney_heatmap_top" if model_source == "deep_learning" else "500m_sydney_heatmap_top"
     dates = []
     for suffix in [
-        f"_{species_id}_500m_sydney_heatmap_top.geojson",
-        f"_{species_id}_500m_sydney_heatmap_top.geojson.gz",
+        f"_{species_id}_{stem}.geojson",
+        f"_{species_id}_{stem}.geojson.gz",
     ]:
-        for path in PREDICTION_500M_DIR.glob(f"*{suffix}"):
+        for path in directory.glob(f"*{suffix}"):
             if path.name.endswith(suffix):
                 dates.append(path.name[: -len(suffix)])
     return sorted(dates)
@@ -171,9 +178,12 @@ def full_grid_geojson_from_csv(csv_path: Path, species_id: str) -> dict:
     return {"type": "FeatureCollection", "features": features}
 
 
-def read_prediction_geojson(path: Path, entry: dict, species_id: str, date_text: str | None = None) -> dict:
+def read_prediction_geojson(path: Path, entry: dict, species_id: str, date_text: str | None = None, model_source: str = "scikit_learn") -> dict:
     date_text = date_text or entry.get("prediction_date") or TRAINED_DEMO_DATE
-    high_res_path = PREDICTION_500M_DIR / f"{date_text}_{species_id}_500m_sydney_heatmap_top.geojson"
+    if model_source == "deep_learning":
+        high_res_path = PREDICTION_500M_DEEP_DIR / f"{date_text}_{species_id}_500m_deep_sydney_heatmap_top.geojson"
+    else:
+        high_res_path = PREDICTION_500M_DIR / f"{date_text}_{species_id}_500m_sydney_heatmap_top.geojson"
     high_res_gz_path = high_res_path.with_suffix(high_res_path.suffix + ".gz")
     if high_res_path.exists():
         return read_json(high_res_path)
@@ -369,13 +379,37 @@ def apply_corrected_prediction_safety(manifest: dict) -> dict:
             "source_resolution_note": "500m map layer is a display/recommendation grid using resampled source environmental features.",
             "notes": f"{AUDIT_WARNING} Relative habitat suitability only; not exact fish location or guaranteed catch.",
         }
-    current_species = manifest.setdefault("current", {}).setdefault("species", {})
+    current_manifest = manifest.setdefault("current", {})
+    current_available_dates = current_manifest.get("available_dates") or []
+    current_species = current_manifest.setdefault("species", {})
     for species_id, common_name in TRAINED_DEMO_SPECIES.items():
         entry = current_species.setdefault(species_id, {"species_id": species_id, "common_name": common_name})
-        entry["available"] = False
-        entry["reason"] = "Current predictions are disabled while the model audit is active. Use trained DEMO output only."
-        entry["audit_status"] = "disabled_under_model_audit"
-        entry["warning"] = "Current prediction is not shown by default because model bias is under audit."
+        sl_dates = set(available_500m_dates_for_source(species_id, "scikit_learn"))
+        dl_dates = set(available_500m_dates_for_source(species_id, "deep_learning"))
+        generated_dates = [date for date in current_available_dates if date in sl_dates or date in dl_dates]
+        if generated_dates:
+            latest = generated_dates[-1]
+            entry.update(
+                {
+                    "available": True,
+                    "mode": "current",
+                    "species_id": species_id,
+                    "common_name": entry.get("common_name") or common_name,
+                    "prediction_date": latest,
+                    "target_date": latest,
+                    "available_dates": generated_dates,
+                    "model_confidence": entry.get("model_confidence", "Low"),
+                    "audit_status": entry.get("audit_status", "current_inference_under_audit"),
+                    "warning": entry.get("warning", "Current/tomorrow output uses latest available environmental data where target-day sources are unavailable."),
+                    "score_explanation": entry.get("score_explanation", "Score is relative habitat suitability / hotspot score, not true probability."),
+                    "available_layers": entry.get("available_layers", ["habitat_heatmap", "hotspot_points", "poi_markers", "sst_front_proxy"]),
+                }
+            )
+        else:
+            entry["available"] = False
+            entry["reason"] = "Current predictions have not been generated yet. Run python pipelines/29_generate_today_tomorrow_500m_predictions.py."
+            entry["audit_status"] = "current_not_generated"
+            entry["warning"] = "Current prediction is unavailable until today/tomorrow inference files exist."
     return manifest
 
 
@@ -412,6 +446,7 @@ def prediction_map(
     mode: str = Query(default="demo", pattern="^(demo|current)$"),
     species_id: str = Query(...),
     date: str | None = Query(default=None),
+    model_source: str = Query(default="scikit_learn", pattern="^(scikit_learn|deep_learning)$"),
 ) -> dict:
     manifest = load_manifest()
     species = manifest.get(mode, {}).get("species", {})
@@ -420,28 +455,40 @@ def prediction_map(
         raise HTTPException(status_code=404, detail={"message": "Species is not present in prediction manifest.", "available": prediction_available()})
     if not entry.get("available"):
         raise HTTPException(status_code=404, detail={"message": "Prediction unavailable for this species.", "entry": entry, "available": prediction_available()})
-    available_dates = entry.get("available_dates") or [entry.get("prediction_date"), entry.get("target_date")]
+    source_dates = available_500m_dates_for_source(species_id, model_source)
+    if mode == "current":
+        requested_dates = entry.get("available_dates") or [entry.get("prediction_date"), entry.get("target_date")]
+        available_dates = [item for item in requested_dates if item in source_dates] or source_dates
+    else:
+        available_dates = source_dates or entry.get("available_dates") or [entry.get("prediction_date"), entry.get("target_date")]
     selected_date = date or entry.get("prediction_date")
+    if selected_date not in set(filter(None, available_dates)) and available_dates:
+        selected_date = available_dates[-1]
     if selected_date not in set(filter(None, available_dates)):
         raise HTTPException(status_code=404, detail={"message": "Requested date is not available for this species/mode.", "entry": entry})
     path = PROJECT_ROOT / entry["file_path"]
-    geojson = read_prediction_geojson(path, entry, species_id, selected_date)
+    geojson = read_prediction_geojson(path, entry, species_id, selected_date, model_source=model_source)
     return {
         "metadata": {
             "mode": mode,
+            "model_source": model_source,
             "species_id": species_id,
             "common_name": entry.get("common_name"),
             "prediction_date": selected_date,
             "target_date": selected_date,
             "available_dates": available_dates,
             "data_source_dates": entry.get("data_source_dates", {}),
-            "model_confidence": entry.get("model_confidence"),
-            "feature_set_name": entry.get("feature_set_name"),
+            "model_confidence": "Experimental" if model_source == "deep_learning" else entry.get("model_confidence"),
+            "feature_set_name": "deep_mlp_tabular_oceanographic" if model_source == "deep_learning" else entry.get("feature_set_name"),
             "available_layers": entry.get("available_layers", []),
             "notes": entry.get("notes"),
             "audit_status": entry.get("audit_status"),
             "warning": entry.get("warning"),
-            "score_explanation": entry.get("score_explanation"),
+            "score_explanation": (
+                "Deep learning MLP relative habitat suitability score; experimental sidecar model, not true catch probability."
+                if model_source == "deep_learning"
+                else entry.get("score_explanation")
+            ),
             "grid_resolution_m_estimate": entry.get("grid_resolution_m_estimate"),
             "source_resolution_note": entry.get("source_resolution_note"),
             "rating_distribution": rating_distribution(geojson),
@@ -456,11 +503,12 @@ def prediction_spots(
     mode: str = Query(default="demo", pattern="^(demo|current)$"),
     species_id: str = Query(...),
     date: str | None = Query(default=None),
+    model_source: str = Query(default="scikit_learn", pattern="^(scikit_learn|deep_learning)$"),
     radius_m: int = Query(default=500, ge=500, le=2000),
     limit: int = Query(default=30, ge=1, le=50),
     min_separation_km: float = Query(default=4.0, ge=0.5, le=20.0),
 ) -> dict:
-    payload = prediction_map(mode=mode, species_id=species_id, date=date)
+    payload = prediction_map(mode=mode, species_id=species_id, date=date, model_source=model_source)
     spots = recommended_spots(payload["geojson"], radius_m=radius_m, limit=limit, min_separation_km=min_separation_km)
     return {
         "metadata": {

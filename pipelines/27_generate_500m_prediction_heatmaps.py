@@ -218,7 +218,7 @@ def predict_species(species_id: str, date_text: str, grid: pd.DataFrame) -> dict
         return {"species_id": species_id, "status": "skipped_missing_features", "missing": missing}
     raw = bundle["model"].predict_proba(grid[feature_columns])[:, 1]
     raw_global_scores = score_to_percentile(raw)
-    export_columns = ["date", "lat", "lon", "source_lat", "source_lon", "sst_c", "sst_gradient", "sst_front_strength", "depth_m", "current_speed", "current_direction_degrees", "current_edge_score", "zos", "sla_gradient", "distance_to_shelf_break", "distance_to_coast_km", "distance_band", "has_physics"]
+    export_columns = ["date", "lat", "lon", "source_lat", "source_lon", "sst_c", "sst_gradient", "sst_front_strength", "depth_m", "current_speed", "current_direction_degrees", "current_edge_score", "zos", "sla_gradient", "distance_to_shelf_break", "distance_to_coast_km", "distance_band", "has_physics", "sst_source_date", "physics_source_date", "chl_source_date"]
     for col in export_columns:
         if col not in grid.columns:
             grid[col] = np.nan
@@ -238,9 +238,9 @@ def predict_species(species_id: str, date_text: str, grid: pd.DataFrame) -> dict
     out["grid_resolution_m_estimate"] = cfg.REQUESTED_RECOMMENDATION_RADIUS_M
     out["source_resolution_note"] = "500m display grid resampled from source environmental features; not exact fish position."
     out["score_note"] = "Display score uses coast-distance and depth-band local ranking, with nearshore 0-20km prioritised and far offshore downweighted."
-    out["sst_source_date"] = date_text
-    out["physics_source_date"] = np.where(out["has_physics"].fillna(False).astype(bool), date_text, None)
-    out["chl_source_date"] = None
+    out["sst_source_date"] = out["sst_source_date"].fillna(date_text) if "sst_source_date" in out.columns else date_text
+    out["physics_source_date"] = out["physics_source_date"].where(out["has_physics"].fillna(False).astype(bool), None) if "physics_source_date" in out.columns else np.where(out["has_physics"].fillna(False).astype(bool), date_text, None)
+    out["chl_source_date"] = out["chl_source_date"].where(out["chl_source_date"].notna(), None) if "chl_source_date" in out.columns else None
     out["top_drivers"] = "SST, SST front proxy, depth band, coast-distance band, current edge if available"
     out["explanation"] = out.apply(
         lambda row: (

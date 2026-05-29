@@ -104,6 +104,7 @@ export function PredictionMapView({
   const tileList = useMemo(() => tiles(center, zoom, size), [center, zoom, size]);
   const selected = selectedIndex == null ? null : geojson?.features[selectedIndex];
   const selectedSpot = selectedSpotIndex == null ? null : spots?.features[selectedSpotIndex];
+  const activeModelSource = geojson?.features[0]?.properties.model_source === "deep_learning" || spots?.features[0]?.properties.model_source === "deep_learning" ? "Deep Learning" : "Scikit-learn";
 
   useEffect(() => {
     const update = () => {
@@ -236,7 +237,7 @@ export function PredictionMapView({
       <div className="mapToolbar">
         <div>
           <strong>Prediction Map</strong>
-          <span>OpenStreetMap basemap with trained habitat suitability overlay</span>
+          <span>{activeModelSource} overlay · OpenStreetMap basemap</span>
         </div>
         <button className="mapResetButton" onPointerDown={(e) => e.stopPropagation()} onClick={reset}>Reset view</button>
       </div>
@@ -321,6 +322,7 @@ export function PredictionMapView({
         {selected && (
           <div className="mapSelection predictionPopup">
             <strong>{selected.properties.common_name}</strong>
+            <small>Model: {selected.properties.model_source === "deep_learning" ? "Deep Learning" : "Scikit-learn"}</small>
             <span>{selected.properties.rating}: {selected.properties.score.toFixed(2)} / 100</span>
             <small>{(selected.geometry.coordinates as number[])[1].toFixed(3)}, {(selected.geometry.coordinates as number[])[0].toFixed(3)}</small>
             <small>SST source: {selected.properties.sst_source_date || "unavailable"}</small>
@@ -331,6 +333,7 @@ export function PredictionMapView({
           return (
             <div className="mapSelection predictionPopup">
               <strong>Spot #{props.spot_rank}: {props.common_name}</strong>
+              <small>Model: {props.model_source === "deep_learning" ? "Deep Learning" : "Scikit-learn"}</small>
               <span>{props.rating}: {props.score.toFixed(2)} / 100</span>
               <small>SST: {typeof props.sst_c === "number" ? `${props.sst_c.toFixed(1)}C` : "unavailable"} | Source: {props.sst_source_date || props.date || "unavailable"}</small>
               <small>Current: {typeof props.current_speed === "number" ? `${props.current_speed.toFixed(2)}m/s` : "unavailable"}</small>
