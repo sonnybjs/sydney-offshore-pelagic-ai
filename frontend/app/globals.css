@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ---- Core palette ------------------------------------------------------ */
 :root {
   --bg: #06131f;
@@ -11,12 +15,10 @@
   --good: #4fe0a2;
   --danger: #ff8a7a;
 
-  /* Glass fills */
   --panel-glass: rgba(12, 34, 52, 0.9);
   --header-glass: rgba(8, 27, 43, 0.86);
   --overlay-glass: rgba(4, 14, 24, 0.76);
 
-  /* Extended fills */
   --btn-bg: #0a1c2b;
   --btn-selected: #123a53;
   --card-selected: #12314a;
@@ -26,16 +28,12 @@
   --on-light: #173040;
   --recommend: #ff4f8b;
 
-  /* Shadows */
   --shadow-panel: 0 18px 50px rgba(0, 0, 0, 0.22);
   --shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.28);
   --shadow-pin: 0 8px 18px rgba(0, 0, 0, 0.35);
 
-  /* Typography */
   --font-sans: "IBM Plex Sans", Arial, Helvetica, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-
-  /* Body background */
   --bg-body: radial-gradient(circle at 60% 10%, #123854 0, var(--bg) 38%, #030a12 100%);
 }
 
@@ -66,454 +64,87 @@
   --bg-body: linear-gradient(160deg, #d4e4ef 0%, var(--bg) 60%);
 }
 
-* { box-sizing: border-box; }
-
+/* ---- Base -------------------------------------------------------------- */
 body {
-  margin: 0;
   background: var(--bg-body);
   color: var(--text);
   font-family: var(--font-sans);
+  margin: 0;
 }
 
 button, input { font: inherit; }
 
-main { min-height: 100vh; padding: 18px; }
-
-/* ---- Header ------------------------------------------------------------ */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  padding: 18px 22px;
-  border: 1px solid var(--line);
-  background: var(--header-glass);
-  border-radius: 8px;
-  backdrop-filter: blur(6px);
+/* ---- Map tile (pixel-positioned by JS) --------------------------------- */
+.map-tile, .mapTile {
+  position: absolute; width: 256px; height: 256px;
+  user-select: none; -webkit-user-drag: none;
 }
 
-.header h1 { margin: 0; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.12; }
-.header p { margin: 8px 0 0; color: var(--muted); font-size: 15px; }
-
-.headerRight { display: flex; align-items: center; gap: 14px; }
-
-.themeToggle {
-  display: flex;
-  gap: 4px;
-  padding: 4px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--btn-bg);
-}
-.themeToggle button {
-  border: 0;
-  border-radius: 999px;
-  padding: 6px 13px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 700;
-  background: transparent;
-  color: var(--muted);
-}
-.themeToggle button.active {
-  background: var(--accent);
-  color: var(--bg);
-}
-
-.status {
-  padding: 9px 12px;
-  border: 1px solid rgba(103, 212, 255, 0.45);
-  color: var(--accent);
-  border-radius: 999px;
-  white-space: nowrap;
-  font-size: 13px;
-}
-.status.offline { color: var(--warm); border-color: rgba(248, 211, 107, 0.45); }
-
-/* ---- Dashboard grid ---------------------------------------------------- */
-.dashboard {
-  display: grid;
-  grid-template-columns: 300px minmax(420px, 1fr) 380px;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.predictionDashboard {
-  display: grid;
-  grid-template-columns: 300px minmax(520px, 1fr) 360px;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.leftRail, .rightRail, .centerStack { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-
-/* ---- Panel shell ------------------------------------------------------- */
-.panel, .mapPanel, .disclaimer {
-  background: var(--panel-glass);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: var(--shadow-panel);
-}
-
-h2 { margin: 0 0 12px; font-size: 15px; text-transform: uppercase; color: var(--heading); letter-spacing: 0; font-weight: 700; }
-h3 { margin: 0 0 8px; }
-p { color: var(--body-1); line-height: 1.45; }
-
-/* ---- Search field ------------------------------------------------------ */
-.searchWrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.searchWrap .searchIcon {
-  position: absolute;
-  left: 10px;
-  color: var(--muted);
-  pointer-events: none;
-  display: flex;
-}
-.searchWrap input[type="search"] {
-  width: 100%;
-  padding: 9px 28px 9px 30px;
-  border: 1px solid var(--line);
-  border-radius: 7px;
-  background: var(--btn-bg);
-  color: var(--text);
-  font-size: 13px;
-  outline: none;
-  appearance: none;
-}
-.searchWrap input[type="search"]::placeholder { color: var(--muted); }
-.searchWrap input[type="search"]:focus { border-color: var(--accent); }
-.searchWrap input[type="search"]::-webkit-search-decoration,
-.searchWrap input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
-.searchClear {
-  position: absolute;
-  right: 6px;
-  border: 0;
-  background: transparent;
-  color: var(--muted);
-  font-size: 18px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 5px;
-}
-.searchClear:hover { color: var(--text); }
-
-/* ---- Species buttons --------------------------------------------------- */
-.speciesGrid { display: grid; gap: 8px; }
-.speciesButton {
-  width: 100%;
-  text-align: left;
-  border: 1px solid var(--line);
-  color: var(--text);
-  background: var(--btn-bg);
-  border-radius: 7px;
-  padding: 10px 12px;
-  cursor: pointer;
-}
-.speciesButton.selected { border-color: var(--accent); background: var(--btn-selected); color: var(--text); }
-.speciesButton small { display: block; margin-top: 4px; color: var(--muted); }
-.speciesButton.selected small { color: var(--accent); }
-.speciesButton:disabled { opacity: 0.45; cursor: not-allowed; }
-
-/* ---- Mode / action buttons --------------------------------------------- */
-.predictionActions { display: grid; gap: 8px; }
-.predictionActions button {
-  border: 1px solid var(--line);
-  background: var(--btn-bg);
-  color: var(--text);
-  border-radius: 7px;
-  padding: 10px 12px;
-  cursor: pointer;
-  text-align: left;
-}
-.predictionActions button.active { border-color: var(--accent); background: var(--btn-selected); }
-
-.tinyNote { margin: 10px 0 0; color: var(--muted); font-size: 12px; }
-.unavailableText, .predictionNotice {
-  border: 1px solid rgba(248, 211, 107, 0.42);
-  background: rgba(248, 211, 107, 0.1);
-  color: #ffe5a1;
-  border-radius: 7px;
-  padding: 10px 12px;
-}
-
-/* ---- Layer toggles ----------------------------------------------------- */
-.toggleList { display: grid; gap: 10px; }
-.toggleRow { display: flex; align-items: center; gap: 10px; color: var(--body-2); }
-.toggleRow input { accent-color: var(--accent); }
-
-/* ---- Date slider ------------------------------------------------------- */
-.dateSliderPanel { display: grid; gap: 8px; }
-.dateSliderPanel input { width: 100%; accent-color: var(--accent); }
-.dateSliderPanel strong { color: var(--text); font-size: 14px; }
-.dateSliderPanel small { color: var(--muted); font-size: 12px; }
-
-/* ---- Metric / status rows ---------------------------------------------- */
-.metricPanel { display: grid; gap: 8px; }
-.metricRow {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(103, 212, 255, 0.12);
-}
-.metricRow span { color: var(--muted); }
-.metricRow strong { text-align: right; font-size: 13px; }
-
-/* ---- Map panel --------------------------------------------------------- */
-.mapPanel { padding: 0; overflow: hidden; }
-.mapToolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-}
-.mapToolbar div { display: flex; flex-direction: column; gap: 4px; }
-.mapToolbar strong { color: var(--text); }
-.mapResetButton {
-  border: 1px solid rgba(103, 212, 255, 0.3);
-  color: var(--text);
-  background: var(--btn-bg);
-  border-radius: 7px;
-  padding: 8px 10px;
-  cursor: pointer;
-}
-
-.realMapShell {
-  position: relative;
-  height: min(68vh, 720px);
-  min-height: 520px;
-  overflow: hidden;
-  background:
-    linear-gradient(115deg, rgba(255,255,255,0.18), rgba(255,255,255,0) 38%),
-    linear-gradient(90deg, #9ed0e7 0%, #78b8dc 45%, #4d9cc7 100%);
-  touch-action: none;
-  user-select: none;
-  cursor: grab;
-}
-.realMapShell:active { cursor: grabbing; }
-.realMap { position: absolute; inset: 0; }
-.tileMap {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  overflow: hidden;
-  background: #cfdde4;
-}
-.predictionMapShell .tileMap { z-index: 1; }
-.mapTile {
-  position: absolute;
-  width: 256px;
-  height: 256px;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-.fallbackMapArt {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  overflow: hidden;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 72% 36%, rgba(31, 117, 164, 0.32), rgba(31, 117, 164, 0) 18%),
-    linear-gradient(110deg, rgba(255,255,255,0.24), rgba(255,255,255,0) 35%);
-}
-.fallbackLand {
-  position: absolute;
-  left: -18%;
-  top: -8%;
-  width: 42%;
-  height: 122%;
-  background: linear-gradient(135deg, #efe2c0, #cdbb8e);
-  clip-path: polygon(0 0, 66% 0, 70% 10%, 64% 22%, 69% 34%, 62% 49%, 66% 63%, 55% 78%, 58% 100%, 0 100%);
-  box-shadow: 12px 0 0 rgba(76, 100, 82, 0.42), 22px 0 32px rgba(19, 65, 88, 0.2);
-}
-.fallbackCoastLabel {
-  position: absolute;
-  z-index: 5;
-  color: var(--on-light);
-  font-size: 12px;
-  font-weight: 800;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.7);
-  pointer-events: none;
-}
-.labelSydney { left: 15.5%; top: 43%; }
-.labelJervis { left: 4%; top: 68%; }
-.shelfLine {
-  position: absolute;
-  z-index: 5;
-  width: 84%;
-  height: 44%;
-  border-right: 2px dashed rgba(15, 61, 88, 0.5);
-  border-radius: 50%;
-  transform: rotate(-8deg);
-  pointer-events: none;
-}
-.shelfOne { left: -18%; top: 24%; }
-.shelfTwo { left: -4%; top: 18%; opacity: 0.55; }
-.fallbackFront {
-  position: absolute;
-  z-index: 6;
-  height: 0;
-  border-top: 3px dashed rgba(245, 184, 65, 0.86);
-  transform-origin: left center;
-  pointer-events: none;
-}
-.fallbackPoi {
-  position: absolute;
-  z-index: 7;
-  width: 9px;
-  height: 9px;
-  margin: -4px 0 0 -4px;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  background: #2d6cdf;
-  box-shadow: 0 0 0 2px rgba(45, 108, 223, 0.18);
-  pointer-events: auto;
-  cursor: pointer;
-  padding: 0;
-  color: #082031;
-}
-.fallbackPoi.fad_demo { background: #16c784; box-shadow: 0 0 0 2px rgba(22, 199, 132, 0.2); }
-.fallbackPoi.shelf_break, .fallbackPoi.canyon, .fallbackPoi.seamount { width: 11px; height: 11px; }
-.fallbackPoi span {
-  position: absolute;
-  left: 13px;
-  top: -6px;
-  max-width: 150px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 3px 6px;
-  border: 1px solid rgba(255,255,255,0.55);
-  border-radius: 5px;
-  background: rgba(245, 250, 252, 0.92);
-  color: var(--on-light);
-  font-size: 11px;
-  font-weight: 800;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-.fallbackHotspot {
-  position: absolute;
-  z-index: 8;
-  margin: -12px 0 0 -12px;
-  border: 2px solid rgba(255,255,255,0.9);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 209, 102, 0.95), rgba(255, 122, 89, 0.55));
-  box-shadow: 0 6px 22px rgba(8, 27, 43, 0.24);
-  cursor: pointer;
-  pointer-events: auto;
-}
-.fallbackHotspot.selected {
-  outline: 4px solid rgba(11, 27, 40, 0.8);
-  outline-offset: 2px;
-}
-.predictionCell {
-  position: absolute;
-  z-index: 7;
-  width: 14px;
-  height: 14px;
-  margin: -7px 0 0 -7px;
-  border: 1px solid rgba(8, 20, 32, 0.64);
-  border-radius: 3px;
-  cursor: pointer;
-  pointer-events: auto;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.22);
-}
+/* ---- Heatmap canvas ---------------------------------------------------- */
 .predictionCanvas {
-  position: absolute;
-  inset: 0;
-  z-index: 6;
-  pointer-events: none;
-  opacity: 0.78;
+  position: absolute; inset: 0; z-index: 6;
+  pointer-events: none; opacity: 0.78;
 }
-.predictionCell.selected {
-  z-index: 9;
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 0 4px rgba(10, 28, 43, 0.72), 0 10px 24px rgba(0, 0, 0, 0.32);
-}
-.predictionFrontCell {
-  position: absolute;
-  z-index: 6;
-  width: 9px;
-  height: 9px;
-  margin: -4px 0 0 -4px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-  background: rgba(255, 214, 102, 0.88);
-  pointer-events: none;
-}
+
+/* ---- Recommended spot pins --------------------------------------------- */
 .recommendedSpot {
-  position: absolute;
-  z-index: 10;
-  width: 28px;
-  height: 28px;
-  margin: -14px 0 0 -14px;
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  background: var(--recommend);
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1;
+  position: absolute; z-index: 10;
+  width: 28px; height: 28px; margin: -14px 0 0 -14px;
+  border: 2px solid #fff; border-radius: 50%;
+  background: var(--recommend); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 12px; font-weight: 800; line-height: 1;
   box-shadow: 0 0 0 4px rgba(8, 20, 32, 0.45), var(--shadow-pin);
 }
-.recommendedSpot:hover,
-.recommendedSpot:focus {
+.recommendedSpot:hover, .recommendedSpot:focus {
   transform: scale(1.08);
   outline: 3px solid rgba(103, 212, 255, 0.7);
   outline-offset: 2px;
 }
+
+/* ---- POI context label ------------------------------------------------- */
 .hotspotPoiContext {
-  position: absolute;
-  z-index: 9;
-  max-width: 180px;
-  padding: 3px 6px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: 5px;
-  background: var(--overlay-glass);
-  color: #e9f8ff;
-  font-size: 11px;
-  font-weight: 800;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  position: absolute; z-index: 9; max-width: 180px;
+  padding: 3px 6px; border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 5px; background: var(--overlay-glass);
+  color: #e9f8ff; font-size: 11px; font-weight: 800;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   pointer-events: none;
+}
+
+/* ---- Prediction cell --------------------------------------------------- */
+.predictionCell {
+  position: absolute; z-index: 7;
+  width: 14px; height: 14px; margin: -7px 0 0 -7px;
+  border: 1px solid rgba(8, 20, 32, 0.64); border-radius: 3px;
+  cursor: pointer; pointer-events: auto;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.22);
+}
+.predictionCell.selected {
+  z-index: 9; width: 20px; height: 20px; margin: -10px 0 0 -10px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 4px rgba(10, 28, 43, 0.72), 0 10px 24px rgba(0, 0, 0, 0.32);
+}
+
+/* ---- SST front cells --------------------------------------------------- */
+.predictionFrontCell {
+  position: absolute; z-index: 6;
+  width: 9px; height: 9px; margin: -4px 0 0 -4px;
+  border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 50%;
+  background: rgba(255, 214, 102, 0.88); pointer-events: none;
 }
 
 /* ---- Current direction arrows (animated) ------------------------------- */
 .currentArrow {
-  position: absolute;
-  z-index: 8;
-  height: 2px;
-  margin: -1px 0 0 0;
-  background: rgb(30, 77, 105);
-  border-radius: 999px;
-  transform-origin: left center;
-  pointer-events: none;
+  position: absolute; z-index: 8; height: 2px; margin: -1px 0 0 0;
+  background: rgb(30, 77, 105); border-radius: 999px;
+  transform-origin: left center; pointer-events: none;
   transform: rotate(var(--cur-rot, 0deg));
   animation: cur-flow var(--cur-dur, 2.5s) linear infinite;
 }
 .currentArrow::after {
-  content: "";
-  position: absolute;
-  right: -1px;
-  top: -4px;
-  width: 0;
-  height: 0;
+  content: ""; position: absolute; right: -1px; top: -4px;
+  width: 0; height: 0;
   border-left: 7px solid rgb(30, 77, 105);
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
@@ -523,283 +154,79 @@ p { color: var(--body-1); line-height: 1.45; }
   to   { transform: rotate(var(--cur-rot, 0deg)) translateX(var(--cur-travel, 14px)); }
 }
 
-/* ---- Map controls ------------------------------------------------------ */
-.maplibregl-canvas { outline: none; }
-.maplibregl-ctrl-group {
-  border-radius: 7px;
-  overflow: hidden;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+/* ---- Map overlay popup ------------------------------------------------- */
+.mapSelection {
+  position: absolute; right: 14px; bottom: 14px; z-index: 8;
+  display: grid; gap: 4px; max-width: min(360px, calc(100% - 28px));
+  padding: 11px 12px; border: 1px solid rgba(103, 212, 255, 0.3);
+  background: var(--overlay-glass); border-radius: 7px;
+  pointer-events: none; color: #fff;
 }
-.tileStatus {
-  position: absolute;
-  left: 14px;
-  top: 58px;
-  z-index: 8;
-  max-width: min(420px, calc(100% - 28px));
-  padding: 8px 10px;
-  border: 1px solid rgba(23, 48, 64, 0.18);
-  background: rgba(247, 251, 253, 0.9);
-  color: var(--on-light);
-  border-radius: 7px;
-  font-size: 12px;
-  pointer-events: none;
-}
-.basemapToggle {
-  position: absolute;
-  left: 14px;
-  top: 14px;
-  z-index: 9;
-  display: flex;
-  gap: 6px;
-  padding: 5px;
-  border: 1px solid rgba(23, 48, 64, 0.18);
-  background: rgba(247, 251, 253, 0.92);
-  border-radius: 8px;
-}
+.mapSelection strong { font-size: 15px; }
+.mapSelection span, .mapSelection small { color: #99b7c9; font-size: 12px; line-height: 1.35; }
+.mapSelection.predictionPopup { pointer-events: auto; }
+.mapSelection.poiPopup { width: min(300px, calc(100% - 28px)); pointer-events: auto; }
+
+/* ---- Map zoom controls ------------------------------------------------- */
 .mapZoomControl {
-  position: absolute;
-  right: 14px;
-  top: 14px;
-  z-index: 9;
-  display: grid;
-  gap: 6px;
+  position: absolute; right: 14px; top: 14px; z-index: 9; display: grid; gap: 6px;
 }
 .mapZoomControl button {
-  width: 34px;
-  height: 34px;
+  width: 34px; height: 34px;
   border: 1px solid rgba(23, 48, 64, 0.18);
-  background: rgba(247, 251, 253, 0.94);
-  color: var(--on-light);
-  border-radius: 7px;
-  cursor: pointer;
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 1;
-}
-.basemapToggle button {
-  border: 0;
-  background: transparent;
-  color: var(--on-light);
-  border-radius: 6px;
-  padding: 7px 9px;
-  cursor: pointer;
-  font-size: 12px;
-}
-.basemapToggle button.active {
-  background: var(--on-light);
-  color: #ffffff;
+  background: rgba(247, 251, 253, 0.94); color: var(--on-light);
+  border-radius: 7px; cursor: pointer; font-weight: 900; font-size: 18px; line-height: 1;
 }
 
-/* ---- Map legend -------------------------------------------------------- */
-.mapLegend {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px;
-  border: 1px solid rgba(255,255,255,0.16);
-  background: var(--overlay-glass);
-  border-radius: 7px;
-  color: var(--body-2);
-  font-size: 12px;
-  z-index: 8;
-  pointer-events: none;
-}
-.mapLegend span { display: flex; align-items: center; gap: 6px; }
-.mapLegend i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; }
-.legendHot { background: var(--warm); }
-.legendFront { background: var(--accent); }
-.legendPoi { background: var(--good); }
-.predictionLegend {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
-  z-index: 8;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: var(--overlay-glass);
-  border-radius: 7px;
-  color: var(--body-2);
-  font-size: 12px;
-  pointer-events: none;
-}
-.predictionLegend span { display: flex; align-items: center; gap: 6px; }
-.predictionLegend i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; }
-.scoreLow { background: #236190; }
+/* ---- Score legend chips ------------------------------------------------ */
+.scoreLow      { background: #236190; }
 .scorePossible { background: #15c8a2; }
-.scoreGood { background: #f6c945; }
-.scorePrime { background: #f06277; }
+.scoreGood     { background: #f6c945; }
+.scorePrime    { background: #f06277; }
 
-/* ---- Map selection popup ----------------------------------------------- */
-.mapSelection {
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
-  display: grid;
-  gap: 4px;
-  max-width: min(360px, calc(100% - 28px));
-  padding: 11px 12px;
-  border: 1px solid rgba(103, 212, 255, 0.3);
-  background: var(--overlay-glass);
-  border-radius: 7px;
-  z-index: 8;
-  pointer-events: none;
-}
-.mapSelection span { color: var(--muted); font-size: 12px; }
-.predictionPopup { color: #ffffff; pointer-events: auto; }
-.poiPopup { width: min(300px, calc(100% - 28px)); color: #ffffff; pointer-events: auto; }
-.predictionPopup small { color: var(--muted); line-height: 1.35; }
-
-/* ---- Hotspot / prediction list ----------------------------------------- */
-.predictionList {
-  display: grid;
-  gap: 9px;
-  max-height: 44vh;
-  overflow: auto;
-  padding-right: 4px;
-}
-.predictionListItem {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4px 10px;
-  width: 100%;
-  padding: 10px 11px;
-  border: 1px solid rgba(103, 212, 255, 0.2);
-  border-radius: 7px;
-  background: var(--btn-bg);
-  color: var(--text);
-  cursor: pointer;
-  text-align: left;
-}
-.predictionListItem.selected {
-  border-color: var(--accent);
-  background: var(--card-selected);
-}
-.predictionListItem span,
-.predictionListItem small { color: var(--muted); font-size: 12px; }
-.predictionListItem strong { grid-row: span 2; align-self: center; }
-
-/* ---- Hotspot cards ----------------------------------------------------- */
-.hotspotList { min-height: 0; }
-.cardsScroll { display: grid; gap: 10px; max-height: 48vh; overflow: auto; padding-right: 4px; }
-.hotspotCard {
-  width: 100%;
-  text-align: left;
-  border: 1px solid rgba(103, 212, 255, 0.2);
-  background: var(--btn-bg);
-  color: var(--text);
-  border-radius: 8px;
-  padding: 13px;
-  cursor: pointer;
-}
-.hotspotCard.active { border-color: var(--accent); background: var(--card-selected); }
-.cardTop { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.rating { padding: 5px 8px; border-radius: 999px; color: #06131f; background: var(--muted); font-size: 12px; font-weight: 800; }
-.rating.good { background: var(--good); }
-.rating.prime { background: var(--warm); }
-.rating.possible { background: #9ecbff; }
-.rating.low { background: var(--danger); }
-.speciesName, .finePrint { color: var(--muted); font-size: 12px; }
-.driverList, .tagList { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0; }
-.driverList span, .tagList span {
-  border: 1px solid rgba(103, 212, 255, 0.25);
-  border-radius: 999px;
-  padding: 5px 8px;
-  color: #cdeeff;
-  font-size: 12px;
-}
-ul { padding-left: 18px; color: var(--body-2); }
-li { margin: 4px 0; line-height: 1.35; }
-.strategy { color: var(--text); font-weight: 700; }
-
-/* ---- Disclaimer banner ------------------------------------------------- */
-.disclaimer { margin-top: 16px; border-color: rgba(248, 211, 107, 0.45); color: #fff1bd; line-height: 1.5; }
-[data-theme="light"] .disclaimer { color: var(--warm); }
-
-/* ---- Rating dot (spot list) ------------------------------------------- */
+/* ---- Rating dot -------------------------------------------------------- */
 .ratingDot {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  margin-right: 7px;
-  vertical-align: middle;
+  display: inline-block; width: 9px; height: 9px;
+  border-radius: 50%; margin-right: 7px; vertical-align: middle;
 }
 
-/* ---- Panel count badge ------------------------------------------------- */
-.panelBadge {
-  font-size: 11px;
-  color: var(--muted);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 2px 8px;
-  font-family: var(--font-mono);
-}
+/* ---- Search input — hide browser clear button -------------------------- */
+.search-wrap input[type="search"]::-webkit-search-decoration,
+.search-wrap input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
 
-/* ---- Panel heading row ------------------------------------------------- */
-.panelHeading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.panelHeading h2 { margin-bottom: 0; }
+/* ---- Date input color scheme ------------------------------------------- */
+.dateInp { color-scheme: dark; }
+[data-theme="light"] .dateInp { color-scheme: light; }
 
-/* ---- Mobile nav -------------------------------------------------------- */
-.mobileNav {
-  display: none;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 50;
-  gap: 4px;
-  padding: 8px;
-  border-top: 1px solid var(--line);
-  background: var(--header-glass);
-  backdrop-filter: blur(10px);
-}
-.mobileNav button {
-  flex: 1;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  padding: 11px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  min-height: 44px;
-  background: transparent;
-  color: var(--muted);
-}
-.mobileNav button.active {
-  background: var(--btn-selected);
-  color: var(--text);
-  border-color: var(--accent);
-}
+/* ---- MapLibre overrides ------------------------------------------------ */
+.maplibregl-canvas { outline: none; }
+.maplibregl-ctrl-group { border-radius: 7px; overflow: hidden; box-shadow: 0 10px 26px rgba(0,0,0,.18); }
 
-/* ---- Responsive -------------------------------------------------------- */
+/* ---- Responsive: right rail at medium breakpoint ----------------------- */
 @media (max-width: 1180px) {
-  .dashboard, .predictionDashboard { grid-template-columns: 280px 1fr; }
-  .rightRail { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4fr 1fr 1fr; align-items: start; }
+  .right-rail {
+    grid-column: 1 / -1;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
 }
 
+/* ---- Mobile: single-pane tab switching --------------------------------- */
 @media (max-width: 860px) {
-  main { padding: 10px 10px 78px; }
-  .mobileNav { display: flex; }
-  .header { flex-direction: column; align-items: stretch; }
-  .headerRight { justify-content: space-between; }
-  .status { white-space: normal; }
-  .predictionDashboard > aside,
-  .predictionDashboard > section { display: none; }
-  .predictionDashboard[data-mtab="setup"] .leftRail  { display: flex !important; }
-  .predictionDashboard[data-mtab="map"]   .centerStack { display: flex !important; }
-  .predictionDashboard[data-mtab="spots"] .rightRail { display: grid !important; grid-template-columns: 1fr; }
-  .predictionList { max-height: none; }
-  .realMapShell { min-height: 64vh; height: 64vh; }
+  main { padding: 10px 10px 78px !important; }
+  .header { flex-direction: column !important; align-items: stretch !important; }
+  .header-right { justify-content: space-between !important; }
+  .dashboard {
+    grid-template-columns: 1fr !important;
+  }
+  .dashboard > aside,
+  .dashboard > section { display: none; }
+  .dashboard[data-mtab="setup"] .left-rail  { display: flex !important; }
+  .dashboard[data-mtab="map"]   .center-stack { display: flex !important; }
+  .dashboard[data-mtab="spots"] .right-rail {
+    display: grid !important; grid-template-columns: 1fr;
+  }
+  .spot-list { max-height: none !important; }
+  .map-shell { min-height: 64vh !important; height: 64vh !important; }
 }
