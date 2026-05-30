@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "../components/Header";
 import { LayerControl } from "../components/LayerControl";
+import { MobileNav } from "../components/MobileNav";
 import { PredictionDatePanel } from "../components/PredictionDatePanel";
 import { PredictionDisclaimer } from "../components/PredictionDisclaimer";
 import { PredictionHotspotList } from "../components/PredictionHotspotList";
@@ -20,9 +21,12 @@ const speciesOptions = [
 ];
 
 export default function Home() {
+  const [theme, setTheme] = useState("dark");
   const [mode, setMode] = useState<PredictionMode>("demo");
   const [modelSource, setModelSource] = useState<ModelSource>("scikit_learn");
   const [selectedSpecies, setSelectedSpecies] = useState("mahi_mahi");
+  const [speciesQuery, setSpeciesQuery] = useState("");
+  const [mobileTab, setMobileTab] = useState("map");
   const [manifest, setManifest] = useState<PredictionManifest | null>(null);
   const [prediction, setPrediction] = useState<PredictionMapResponse | null>(null);
   const [spots, setSpots] = useState<PredictionMapResponse | null>(null);
@@ -34,6 +38,10 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const [layers, setLayers] = useState<LayerState>({ heatmap: true, hotspots: true, sst: false, fronts: false, currents: false, pois: true, shelf: true });
   const requestSeq = useRef(0);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     Promise.all([fetchPredictionManifest(), fetchPois()]).then(([manifestResult, poiResult]) => {
@@ -51,16 +59,14 @@ export default function Home() {
     const entry = manifest?.[mode]?.species?.[selectedSpecies];
     return (entry?.available_dates || [entry?.prediction_date]).filter(Boolean) as string[];
   }, [manifest, mode, selectedSpecies]);
+
   const currentDateOptions = useMemo(() => {
     const entry = manifest?.current?.species?.[selectedSpecies];
     return (entry?.available_dates || manifest?.current?.available_dates || [entry?.prediction_date]).filter(Boolean) as string[];
   }, [manifest, selectedSpecies]);
 
   useEffect(() => {
-    if (!dateOptions.length) {
-      setSelectedDate(null);
-      return;
-    }
+    if (!dateOptions.length) { setSelectedDate(null); return; }
     if (!selectedDate || !dateOptions.includes(selectedDate)) setSelectedDate(dateOptions[dateOptions.length - 1]);
   }, [dateOptions, selectedDate]);
 
@@ -79,7 +85,10 @@ export default function Home() {
       setMessage(entry.reason || "Prediction unavailable for this species.");
       return;
     }
-    Promise.all([fetchPredictionMap(mode, selectedSpecies, selectedDate, modelSource), fetchPredictionSpots(mode, selectedSpecies, 500, selectedDate, modelSource)]).then(([result, spotResult]) => {
+    Promise.all([
+      fetchPredictionMap(mode, selectedSpecies, selectedDate, modelSource),
+      fetchPredictionSpots(mode, selectedSpecies, 500, selectedDate, modelSource)
+    ]).then(([result, spotResult]) => {
       if (requestSeq.current !== seq) return;
       setOffline((current) => current || result.offline);
       if (!result.data) {
@@ -100,11 +109,16 @@ export default function Home() {
     return "Historical trained-model prediction demo";
   }, [mode, selectedDate]);
 
+  const filteredSpecies = useMemo(() => {
+    const q = speciesQuery.trim().toLowerCase();
+    return q ? speciesOptions.filter((s) => s.label.toLowerCase().includes(q)) : speciesOptions;
+  }, [speciesQuery]);
+
   return (
     <main>
-      <Header offline={offline} />
+      <Header offline={offline} theme={theme} onTheme={setTheme} />
       <PredictionDisclaimer />
-      <div className="predictionDashboard">
+      <div className="predictionDashboard" data-mtab={mobileTab}>
         <aside className="leftRail">
           <section className="panel">
             <h2>Prediction Mode</h2>
@@ -114,14 +128,8 @@ export default function Home() {
               selectedDate={selectedDate}
               todayDate={currentDateOptions[0] || null}
               tomorrowDate={currentDateOptions[currentDateOptions.length - 1] || null}
-              onToday={() => {
-                setMode("current");
-                if (currentDateOptions[0]) setSelectedDate(currentDateOptions[0]);
-              }}
-              onTomorrow={() => {
-                setMode("current");
-                if (currentDateOptions.length) setSelectedDate(currentDateOptions[currentDateOptions.length - 1]);
-              }}
+              onToday={() => { setMode("current"); if (currentDateOptions[0]) setSelectedDate(currentDateOptions[0]); }}
+              onTomorrow={() => { setMode("current"); if (currentDateOptions.length) setSelectedDate(currentDateOptions[currentDateOptions.length - 1]); }}
             />
             <p className="tinyNote">{subtitle}</p>
           </section>
@@ -129,23 +137,46 @@ export default function Home() {
             <h2>Model Source</h2>
             <ModelSourceToggle modelSource={modelSource} onModelSource={setModelSource} />
             <p className="tinyNote">
-              {modelSource === "deep_learning"
-                ? "Experimental PyTorch MLP sidecar model."
-                : "Original scikit-learn selected model output."}
+              {modelSource === "deep_learning" ? "Experimental PyTorch MLP sidecar model." : "Original scikit-learn selected model output."}
             </p>
           </section>
           <section className="panel">
-            <h2>Species</h2>
+            <div className="panelHeading">
+              <h2>Species</h2>
+              <span className="panelBadge">{filteredSpecies.length}/{speciesOptions.length}</span>
+            </div>
+            <div className="searchWrap">
+              <span className="searchIcon">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M10.5 10.5L14 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </span>
+              <input
+                type="search"
+                value={speciesQuery}
+                placeholder="Search species…"
+                onChange={(e) => setSpeciesQuery(e.target.value)}
+              />
+              {speciesQuery && (
+                <button className="searchClear" onClick={() => setSpeciesQuery("")} aria-label="Clear">&times;</button>
+              )}
+            </div>
             <div className="speciesGrid">
-              {speciesOptions.map((item) => {
+              {filteredSpecies.map((item) => {
                 const entry = manifest?.[mode]?.species?.[item.id];
                 return (
-                  <button key={item.id} className={selectedSpecies === item.id ? "speciesButton selected" : "speciesButton"} onClick={() => setSelectedSpecies(item.id)}>
+                  <button
+                    key={item.id}
+                    className={selectedSpecies === item.id ? "speciesButton selected" : "speciesButton"}
+                    onClick={() => setSelectedSpecies(item.id)}
+                  >
                     {item.label}
                     <small>{entry?.available ? "Available" : "Unavailable"}</small>
                   </button>
                 );
               })}
+              {filteredSpecies.length === 0 && <p>No species match &ldquo;{speciesQuery}&rdquo;.</p>}
             </div>
           </section>
           <LayerControl layers={layers} onToggle={(key) => setLayers((state) => ({ ...state, [key]: !state[key] }))} />
@@ -183,7 +214,11 @@ export default function Home() {
           />
         </section>
         <aside className="rightRail">
-          <PredictionHotspotList geojson={spots?.geojson || null} selectedIndex={selectedSpotIndex} onSelect={setSelectedSpotIndex} />
+          <PredictionHotspotList
+            geojson={spots?.geojson || null}
+            selectedIndex={selectedSpotIndex}
+            onSelect={(i) => { setSelectedSpotIndex(i); setMobileTab("map"); }}
+          />
           <section className="panel">
             <h2>Model Notes</h2>
             <p>{prediction?.metadata.notes || selectedEntry?.notes || "Select an available species to load prediction metadata."}</p>
@@ -191,6 +226,7 @@ export default function Home() {
           </section>
         </aside>
       </div>
+      <MobileNav tab={mobileTab} onTab={setMobileTab} />
     </main>
   );
 }
