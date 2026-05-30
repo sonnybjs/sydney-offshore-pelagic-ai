@@ -103,6 +103,7 @@ export default function Home() {
   return (
     <main>
       <Header offline={offline} />
+      <PredictionDisclaimer />
       <div className="predictionDashboard">
         <aside className="leftRail">
           <section className="panel">
@@ -180,7 +181,6 @@ export default function Home() {
             onSelect={setSelectedIndex}
             onSpotSelect={setSelectedSpotIndex}
           />
-          <PredictionDisclaimer />
         </section>
         <aside className="rightRail">
           <PredictionHotspotList geojson={spots?.geojson || null} selectedIndex={selectedSpotIndex} onSelect={setSelectedSpotIndex} />

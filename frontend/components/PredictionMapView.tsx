@@ -261,9 +261,12 @@ export function PredictionMapView({
           return typeof props.current_speed === "number" && typeof props.current_direction_degrees === "number" && props.current_speed > 0.05;
         }).filter((_, index) => index % (zoom >= 12 ? 22 : 42) === 0).slice(0, 220).map((cell, index) => {
           const props = cell.feature.properties;
-          const length = clamp((props.current_speed || 0) * 24, 8, 24);
+          const length = clamp((props.current_speed || 0) * 38, 5, 28);
           const direction = props.current_direction_degrees || 0;
-          return <span key={`current-${index}`} className="currentArrow" style={{ left: cell.x, top: cell.y, width: length, transform: `rotate(${direction}deg)` }} />;
+          const phase = (((cell.x || 0) * 0.037 + Math.abs(cell.y || 0) * 0.021) % 2.5).toFixed(2);
+          const dur = (1.6 + (1 - Math.min(1, (props.current_speed || 0) / 0.8)) * 1.2).toFixed(1);
+          const travel = Math.round(length * 0.5);
+          return <span key={`current-${index}`} className="currentArrow" style={{ left: cell.x, top: cell.y, width: length, "--cur-rot": `${direction}deg`, "--cur-dur": `${dur}s`, "--cur-travel": `${travel}px`, animationDelay: `${phase}s` } as React.CSSProperties} />;
         })}
         {layers.pois && spots?.features.map((feature, index) => {
           const poi = feature.properties.nearest_poi;
