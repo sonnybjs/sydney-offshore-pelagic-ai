@@ -74,10 +74,19 @@ body {
 
 button, input { font: inherit; }
 
-/* ---- Map tile (pixel-positioned by JS) --------------------------------- */
+/* ---- Map tile container ------------------------------------------------ */
+.tile-map {
+  position: absolute; inset: 0; z-index: 4; overflow: hidden; background: #cfdde4;
+}
+/* Prediction map: tiles sit below heatmap canvas */
+.map-shell .tile-map { z-index: 1; }
+
+/* ---- Map tile img (pixel-positioned by JS) ----------------------------- */
 .map-tile, .mapTile {
   position: absolute; width: 256px; height: 256px;
   user-select: none; -webkit-user-drag: none;
+  /* override Tailwind preflight max-width on img */
+  max-width: none;
 }
 
 /* ---- Heatmap canvas ---------------------------------------------------- */
@@ -136,8 +145,9 @@ button, input { font: inherit; }
 
 /* ---- Current direction arrows (animated) ------------------------------- */
 .currentArrow {
+  display: block;
   position: absolute; z-index: 8; height: 2px; margin: -1px 0 0 0;
-  background: rgb(30, 77, 105); border-radius: 999px;
+  background: rgba(30, 77, 105, 0.85); border-radius: 999px;
   transform-origin: left center; pointer-events: none;
   transform: rotate(var(--cur-rot, 0deg));
   animation: cur-flow var(--cur-dur, 2.5s) linear infinite;
@@ -145,7 +155,7 @@ button, input { font: inherit; }
 .currentArrow::after {
   content: ""; position: absolute; right: -1px; top: -4px;
   width: 0; height: 0;
-  border-left: 7px solid rgb(30, 77, 105);
+  border-left: 7px solid rgba(30, 77, 105, 0.85);
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
 }

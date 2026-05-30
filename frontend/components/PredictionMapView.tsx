@@ -74,11 +74,21 @@ function tiles(center: Center, zoom: number, size: Point) {
   return out;
 }
 
+const LAYER_LABELS: Array<[keyof LayerState, string]> = [
+  ["heatmap", "Habitat heatmap"],
+  ["hotspots", "Recommendation points"],
+  ["fronts", "SST front proxy"],
+  ["currents", "Current arrows"],
+  ["pois", "POI markers"],
+  ["shelf", "Shelf/depth markers"],
+];
+
 export function PredictionMapView({
   geojson,
   spots,
   pois,
   layers,
+  onLayerToggle,
   selectedIndex,
   selectedSpotIndex,
   onSelect,
@@ -88,6 +98,7 @@ export function PredictionMapView({
   spots?: FeatureCollection<PredictionProperties> | null;
   pois: POI[];
   layers: LayerState;
+  onLayerToggle: (key: keyof LayerState) => void;
   selectedIndex: number | null;
   selectedSpotIndex: number | null;
   onSelect: (index: number) => void;
@@ -101,6 +112,7 @@ export function PredictionMapView({
   const [zoom, setZoom] = useState(8);
   const [size, setSize] = useState<Point>({ x: 0, y: 0 });
   const [selectedPoi, setSelectedPoi] = useState<POI | null>(null);
+  const [layersOpen, setLayersOpen] = useState(false);
   const tileList = useMemo(() => tiles(center, zoom, size), [center, zoom, size]);
   const selected = selectedIndex == null ? null : geojson?.features[selectedIndex];
   const selectedSpot = selectedSpotIndex == null ? null : spots?.features[selectedSpotIndex];
@@ -233,16 +245,16 @@ export function PredictionMapView({
   }
 
   return (
-    <section className="mapPanel predictionMapPanel">
-      <div className="mapToolbar">
-        <div>
-          <strong>Prediction Map</strong>
-          <span>{activeModelSource} overlay · OpenStreetMap basemap</span>
+    <section className="bg-[var(--panel-glass)] border border-[var(--line)] rounded-panel shadow-panel overflow-hidden p-0">
+      <div className="flex justify-between items-center gap-4 px-4 py-[14px] border-b border-[var(--line)] text-[var(--muted)]">
+        <div className="flex flex-col gap-1">
+          <strong className="text-[var(--text)]">Prediction Map</strong>
+          <span className="text-[13px]">{activeModelSource} overlay · OpenStreetMap basemap</span>
         </div>
-        <button className="mapResetButton" onPointerDown={(e) => e.stopPropagation()} onClick={reset}>Reset view</button>
+        <button className="border border-[rgba(103,212,255,0.3)] text-[var(--text)] bg-[var(--btn-bg)] rounded-btn px-[10px] py-2 cursor-pointer whitespace-nowrap" onPointerDown={(e) => e.stopPropagation()} onClick={reset}>Reset view</button>
       </div>
-      <div ref={mapRef} className="realMapShell predictionMapShell" onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerUp}>
-        <div className="tileMap">
+      <div ref={mapRef} className="map-shell relative overflow-hidden touch-none select-none cursor-grab active:cursor-grabbing" style={{ height: "min(68vh, 720px)", minHeight: 520 }} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerUp}>
+        <div className="tile-map">
           {tileList.map((tile) => <img key={tile.key} alt="" className="mapTile" src={tile.url} style={{ left: tile.left, top: tile.top }} draggable={false} />)}
         </div>
         <canvas ref={canvasRef} className="predictionCanvas" />
@@ -317,9 +329,29 @@ export function PredictionMapView({
             </button>
           );
         })}
-        <div className="mapZoomControl" onPointerDown={(e) => e.stopPropagation()}>
-          <button onClick={() => zoomBy(1)}>+</button>
-          <button onClick={() => zoomBy(-1)}>-</button>
+        <div className="absolute right-[14px] top-[14px] z-[9] flex flex-col gap-1.5" onPointerDown={(e) => e.stopPropagation()}>
+          {/* Layers dropdown */}
+          <div className="relative">
+            <button
+              className="w-full border border-[rgba(23,48,64,0.18)] bg-[rgba(247,251,253,0.94)] text-[var(--on-light)] rounded-btn px-[10px] py-2 cursor-pointer font-bold text-[13px] flex items-center gap-1.5 whitespace-nowrap"
+              onClick={() => setLayersOpen((o) => !o)}
+            >
+              Layers {layersOpen ? "▲" : "▼"}
+            </button>
+            {layersOpen && (
+              <div className="absolute right-0 top-full mt-1.5 min-w-[220px] bg-[rgba(247,251,253,0.97)] border border-[rgba(23,48,64,0.18)] rounded-panel shadow-overlay p-3 z-[10]">
+                {LAYER_LABELS.map(([key, label]) => (
+                  <label key={key} className="flex items-center gap-2.5 py-[7px] text-[var(--on-light)] text-[14px] cursor-pointer border-b border-[rgba(23,48,64,0.08)] last:border-b-0">
+                    <input type="checkbox" className="accent-[var(--accent)] w-4 h-4 flex-shrink-0" checked={layers[key]} onChange={() => onLayerToggle(key)} />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+          {/* Zoom controls */}
+          <button className="w-[34px] h-[34px] border border-[rgba(23,48,64,0.18)] bg-[rgba(247,251,253,0.94)] text-[var(--on-light)] rounded-btn cursor-pointer font-black text-[18px] leading-none" onClick={() => zoomBy(1)}>+</button>
+          <button className="w-[34px] h-[34px] border border-[rgba(23,48,64,0.18)] bg-[rgba(247,251,253,0.94)] text-[var(--on-light)] rounded-btn cursor-pointer font-black text-[18px] leading-none" onClick={() => zoomBy(-1)}>-</button>
         </div>
         <MapLegend />
         {selected && (

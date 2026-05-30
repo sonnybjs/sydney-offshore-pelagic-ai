@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "../components/Header";
-import { LayerControl } from "../components/LayerControl";
 import { MobileNav } from "../components/MobileNav";
 import { PredictionDatePanel } from "../components/PredictionDatePanel";
 import { PredictionDisclaimer } from "../components/PredictionDisclaimer";
@@ -128,14 +127,14 @@ export default function Home() {
   }, [speciesQuery]);
 
   return (
-    <main className="min-h-screen p-[18px]">
+    <main className="min-h-screen p-[18px] max-[860px]:pb-[78px]">
       <Header offline={offline} theme={theme} onTheme={setTheme} />
       <PredictionDisclaimer />
 
       <div className="dashboard grid [grid-template-columns:300px_minmax(520px,1fr)_360px] gap-4 mt-4 max-[1180px]:[grid-template-columns:280px_1fr]" data-mtab={mobileTab}>
 
         {/* Left rail */}
-        <aside className="left-rail flex flex-col gap-4 min-w-0">
+        <aside className={cn("left-rail flex flex-col gap-4 min-w-0", mobileTab !== "setup" && "max-[860px]:!hidden")}>
 
           {/* Prediction Mode */}
           <section className="bg-[var(--panel-glass)] border border-[var(--line)] rounded-panel p-4 shadow-panel">
@@ -196,9 +195,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Layers */}
-          <LayerControl layers={layers} onToggle={(key) => setLayers((s) => ({ ...s, [key]: !s[key] }))} />
-
           {/* Demo date slider */}
           {dateOptions.length > 1 && (
             <section className="bg-[var(--panel-glass)] border border-[var(--line)] rounded-panel p-4 shadow-panel">
@@ -220,7 +216,7 @@ export default function Home() {
         </aside>
 
         {/* Center — map */}
-        <section className="center-stack flex flex-col gap-4 min-w-0">
+        <section className={cn("center-stack flex flex-col gap-4 min-w-0", mobileTab !== "map" && "max-[860px]:!hidden")}>
           {message && (
             <div className="border border-[rgba(248,211,107,0.42)] bg-[rgba(248,211,107,0.1)] text-[#ffe5a1] rounded-btn px-3 py-2.5 text-[13px]">
               {message}
@@ -236,13 +232,14 @@ export default function Home() {
             geojson={prediction?.geojson || null}
             spots={spots?.geojson || null}
             pois={pois} layers={layers}
+            onLayerToggle={(key) => setLayers((s) => ({ ...s, [key]: !s[key] }))}
             selectedIndex={selectedIndex} selectedSpotIndex={selectedSpotIndex}
             onSelect={setSelectedIndex} onSpotSelect={setSelectedSpotIndex}
           />
         </section>
 
         {/* Right rail */}
-        <aside className="right-rail flex flex-col gap-4 min-w-0">
+        <aside className={cn("right-rail flex flex-col gap-4 min-w-0", mobileTab !== "spots" && "max-[860px]:!hidden")}>
           <PredictionHotspotList
             geojson={spots?.geojson || null}
             selectedIndex={selectedSpotIndex}
